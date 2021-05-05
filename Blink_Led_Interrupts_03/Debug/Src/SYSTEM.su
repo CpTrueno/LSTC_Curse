@@ -1,0 +1,5 @@
+SYSTEM.c:65:6:BTN_Ini	8	static
+SYSTEM.c:69:6:SYSTEM_Ini	8	static
+SYSTEM.c:99:6:TIM2_IRQHandler	8	static
+SYSTEM.c:104:6:SysTick_Handler	16	static
+SYSTEM.c:141:10:LED_Set	16	static

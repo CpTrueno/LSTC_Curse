@@ -1,0 +1,10 @@
+13:26:55 **** Incremental Build of configuration Debug for project Blink_Led_Interrupts_03 ****
+make -j4 all 
+arm-none-eabi-size   Blink_Led_Interrupts_03.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1036	      8	   1576	   2620	    a3c	Blink_Led_Interrupts_03.elf
+Finished building: default.size.stdout
+ 
+
+13:26:56 Build Finished. 0 errors, 0 warnings. (took 480ms)
+
