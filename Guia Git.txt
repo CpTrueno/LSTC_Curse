@@ -1,0 +1,44 @@
+- Generar pryecto.
+	En la carpeta del proyecto abrir con click derecho:
+		- Git Bash Here
+	En el terminal comenzamos con:
+		- git init	=> Nos inicia la carpeta local como directorio.
+	Comenzamos con un "status" comprobar que reconoce los archivos apareciendo en rojo, (<rojo> no están añadidos | <verde> están añadidos):
+		- git status
+	Añadimos los archivos locales:
+		- git add -A
+	Validamos el comando con "status" (ahora en verde):
+		- git status
+	Generamos el primer commit
+		- git commit -m "<Texto>"
+	Preparar los archivos:
+		- git remote add origin "<URL/Directorio>"
+		o
+		- git pull
+	Subir archivos:
+		- git push -u origin master
+	Crear Rama:
+		- git branch <NAME>
+	Camiar de Rama:
+		- git checkout <NAME>
+
+--
+Comandos:
+    -n, --dry-run         dry run
+    -v, --verbose         be verbose
+
+    -i, --interactive     interactive picking
+    -p, --patch[=<patch-mode>]
+                          select hunks interactively
+    -e, --edit            edit current diff and apply
+    -f, --force           allow adding otherwise ignored files
+    -u, --update          update tracked files
+    --renormalize         renormalize EOL of tracked files (implies -u)
+    -N, --intent-to-add   record only the fact that the path will be added later
+    -A, --all             add changes from all tracked and untracked files
+    --ignore-removal      ignore paths removed in the working tree (same as --no-all)
+    --refresh             don't add, only refresh the index
+    --ignore-errors       just skip files which cannot be added because of errors
+    --ignore-missing      check if - even missing - files are ignored in dry run
+    --chmod (+|-)x        override the executable bit of the listed files
+	
