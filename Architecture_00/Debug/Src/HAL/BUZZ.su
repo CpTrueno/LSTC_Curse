@@ -1,0 +1,3 @@
+BUZZ.c:39:6:BUZZ_Ini	8	static
+BUZZ.c:53:6:BUZZ_Set	8	static
+BUZZ.c:57:6:BUZZ_Get	8	static

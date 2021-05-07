@@ -1,0 +1,3 @@
+ANALOG.c:40:6:ANALOG_Ini	8	static
+ANALOG.c:54:6:ANALOG_Set	8	static
+ANALOG.c:58:6:ANALOG_Get	8	static

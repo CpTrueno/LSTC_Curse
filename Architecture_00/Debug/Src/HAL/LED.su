@@ -1,0 +1,4 @@
+LED.c:39:6:LED_Ini	8	static
+LED.c:46:6:SysTick_Handler	16	static
+LED.c:75:7:LED_Set	16	static
+LED.c:80:6:LED_Get	8	static

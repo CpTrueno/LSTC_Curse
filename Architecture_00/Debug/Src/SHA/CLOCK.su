@@ -1,0 +1,3 @@
+CLOCK.c:39:6:CLOCK_Ini	16	static
+CLOCK.c:63:6:CLOCK_Set	8	static
+CLOCK.c:67:6:CLOCK_Get	8	static

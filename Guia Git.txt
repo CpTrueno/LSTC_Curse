@@ -13,7 +13,7 @@
 		- git commit -m "<Texto>"
 	Preparar los archivos:
 		- git remote add origin "<URL/Directorio>"
-		o
+	Descargar archivos:
 		- git pull
 	Subir archivos:
 		- git push -u origin master
