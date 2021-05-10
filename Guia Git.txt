@@ -21,6 +21,10 @@
 		- git branch <NAME>
 	Camiar de Rama:
 		- git checkout <NAME>
+	Clonar repositorio
+		- git clone <URL/Directorio>
+	Comprobar configuración
+		- git config --list
 
 --
 Comandos:
