@@ -8,6 +8,6 @@
 #ifndef SHA_CLOCK__H_
 #define SHA_CLOCK__H_
 
-void CLOCK_Ini();
+void CLOCK_Set_Timer_1ms();
 
 #endif /* SHA_CLOCK__H_ */

@@ -8,6 +8,9 @@
 #ifndef HAL_SWITCH__H_
 #define HAL_SWITCH__H_
 
+void SWITCH_per();
+void SWITCH_Ini();
 
+#include "SWITCH.h"
 
 #endif /* HAL_SWITCH__H_ */

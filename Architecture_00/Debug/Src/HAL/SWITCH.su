@@ -1,3 +1,5 @@
-SWITCH.c:39:6:SWITCH_Ini	8	static
-SWITCH.c:53:6:SWITCH_Set	8	static
-SWITCH.c:57:6:SWITCH_Get	8	static
+SWITCH.c:44:6:SWITCH_Ini	8	static
+SWITCH.c:54:6:SWITCH_per	8	static
+SWITCH.c:96:6:SWITCH_Set	8	static
+SWITCH.c:100:5:SWITCH_Get_BTN_0	8	static
+SWITCH.c:111:5:SWITCH_Get_BTN_1	8	static

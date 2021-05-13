@@ -17,17 +17,17 @@
  ******************************************************************************
  */
 
-#include <stdint.h>
-#include "HAL\ANALOG.h"
-#include "HAL\BUZZ.h"
-#include "HAL\CAN.h"
-#include "HAL\I2C.h"
-#include "HAL\LED.h"
-#include "HAL\SERIE.h"
-#include "HAL\SWITCH.h"
 
-#include "SYS\SYSTEM.h"
-//#include "SYS\CORTEXM_TYPES.h"
+#include "ANALOG.h"
+#include "BUZZ.h"
+#include "CAN.h"
+#include "I2C.h"
+#include "LED.h"
+#include "SERIE.h"
+#include "SWITCH.h"
+
+#include "SYSTEM.h"
+//#include "CORTEXM_TYPES.h"
 #include <STDINT.H>
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
@@ -39,6 +39,11 @@
  *************************************************************************** */
 void SYSTEM_Ini(void);
 void LED_Set(uint32_t stat);
+
+int SWITCH_Get_BTN_0();
+int SWITCH_Get_BTN_1();
+
+void Led_ON();
 
 /* ***************************************************************************
  * VARIABLES
@@ -53,10 +58,22 @@ int main(void)
 {
 	SYSTEM_Ini();		// HW Init
 
-	LED_Set(0xFF000055);		/* Estado del LED */
+	LED_Set(0x00000000);		/* Estado del LED */
 
     /* Loop forever */
 	while(1){
-
+		Led_ON();
 	}
+}
+
+
+void Led_ON(){
+	if(SWITCH_Get_BTN_0()==0){
+			LED_Set(0x00FF00FF);
+		}
+		else if(SWITCH_Get_BTN_0()==1) {
+			LED_Set(0xAAAA1111);
+		}
+		else
+			LED_Set(0x00000000);
 }

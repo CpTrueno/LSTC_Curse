@@ -1,0 +1,251 @@
+/* **************************************************************************
+ * PLANTILLA_.h
+ * ==========================================================================
+ * *********************************************************************** */
+
+#ifndef	PLANTILLA__H_
+#define PLANTILLA__H_
+
+uint32_t PLANTILLA_Ini(uint32_t prmi);
+void     PLANTILLA_Per(void);
+
+#include "PLANTILLA.h"
+
+#endif	/* PLANTILLA__H_ */
+
+
+
+
+
+
+/* **************************************************************************
+ * PLANTILLA_.h
+ * ==========================================================================
+ * *********************************************************************** */
+
+#ifndef	PLANTILLA__H_
+#define PLANTILLA__H_
+
+uint32_t PLANTILLA_SetRitmo(uint32_t NuevoRitmo);
+
+
+#endif	/* PLANTILLA__H_ */
+
+
+
+
+
+
+
+/* **************************************************************************
+ * PLANTILLA.c
+ * ==========================================================================
+ * *********************************************************************** */
+ 
+/** 
+ * \file	PLANTILLA
+ * \brief	SIRVE DE BASE PARA LA CREACIÓN DE MÓDULOS HAL
+ * \author	J.R.G.
+ *
+ * # HARDWARE
+ *
+ * | PUERTO | FUNCIÓN                   | NOTAS |	
+ * |--------|---------------------------|-------|
+ * |  PA0   | Salida de señal           |       |
+ *
+ * # RECURSOS
+ *
+ * - Periféricos, memoria u otros recursos empleados
+ *
+ *
+ */
+
+/* **************************************************************************
+ * DECLARACIONES
+ ************************************************************************* */
+
+#include "STM32F042_REGS.h"
+
+#include  "PLANTILLA_.h"
+
+/* **************************************************************************
+ * DEFINICIONES Y CONSTANTES
+ ************************************************************************* */
+
+#define PLANTILLA_MINDIVISOR	(2)
+#define PLANTILLA_MAXDIVISOR	(1000)ss
+
+/* **************************************************************************
+ * VARIABLES
+ ************************************************************************* */
+
+uint32_t RitmoCambio;
+
+/* ##########################################################################
+ * ##########################################################################
+ * ########        AUXILIARES        ########################################
+ * ##########################################################################
+ * ####################################################################### */
+
+/* **************************************************************************
+ * Las rutinas auxiliares se emplean únicamente en el propio módulo 
+ * y se definen siempre como "static".
+ * *********************************************************************** */
+
+
+/**
+ * \brief	FUNCIÓN QUE GUARDA UN VALOR EN EL BUFFER
+ * @param data	Valor que se guarda en el buffer.
+ * @return      Valor que se ha guardado en el buffer o -1 si está lleno
+ *
+ * La rutina guarda en el buffer el valor recibido truncado a 8 bits.
+ * Se introduce solamente como ejemplo. No se usa. 
+ */
+
+static int32_t PLANTILLA_AuxSetBuff(uint32_t data)
+{
+ 	return(-1);
+}
+
+
+/* ##########################################################################
+ * ##########################################################################
+ * ########        SISTEMA        ###########################################
+ * ##########################################################################
+ * ####################################################################### */
+
+/* **************************************************************************
+** INICIALIZACIÓN DEL MÓDULO PLANTILLA
+** --------------------------------------------------------------------------
+************************************************************************** */
+
+/**
+ * \brief   INICIALIZACIÓN DEL MÓDULO PLANTILLA
+ * \param prmi	No se usa. Se usa por mantener el estilo
+ * \return		Devuelve siempre 0. Se usa por mantener el estilo.
+ *
+ * Esta función prepara los puertos para su uso por la PLANTILLA.
+ * Pxx queda como entrada y Pxy como salida con pull-up.
+ *
+ * Espera que el reloj de los puertos esté activado preveiamente.
+ *
+ */
+
+uint32_t PLANTILLA_Ini(uint32_t prmi)
+{
+    /* --- INICIALIZA LOS PUERTOS ---------------------------------------- */
+
+    * GPIOA_ODR &= ~0x00000001;		/* PA0 salida a niel bajo */
+
+    *GPIOA_MODER &= ~0x000000002;	/* PA0 como ... */
+    *GPIOA_MODER |=  0x000000001;	/* ... salida */
+
+    /* --- INICIALIZA VARIABLES ------------------------------------------ */
+
+    RitmoCambio = PLANTILLA_MINDIVISOR;
+
+    /* --- FINAL DE INICIALIZACIONES ------------------------------------- */
+	
+	return(0);
+}
+
+/* **************************************************************************
+** LLAMADA PERIÓDICA (@ 1kHz)
+** --------------------------------------------------------------------------
+************************************************************************** */
+
+/**
+ * \brief   LLAMADA PERIÓDICA AL MÓDULO PLANTILLA
+ *
+ * Esta función cambia el estado de Pxx de acuerdo al ritmo fijado en la
+ * variable RitmoCambio;
+ *
+ */
+
+uint32_t PLANTILLA_Per(uint32_t prmi)
+{
+static uint32_t CuentaLocal;
+
+    /* --- INCREMENTO DEL CONTADOR LOCAL --------------------------------- */
+
+    CuentaLocal++;
+
+	/* --- COMPRUEBA EL ESTADO Y CAMBIA LA SALIDA SI PROCEDE ------------- */
+
+    if(CuentaLocal >= RitmoCambio)
+    {
+		*GPIOA_ODR ^= 0x00000001;	/* PA0 cambia de estado */
+	}
+
+    /* --- FINAL DE INICIALIZACIONES ------------------------------------- */
+	
+	return(0);
+}
+
+
+
+/* ##########################################################################
+ * ##########################################################################
+ * ########        APLICACIÓN        ########################################
+ * ##########################################################################
+ * ####################################################################### */
+
+/* **************************************************************************
+** FIJAR UN RITMO DE CAMBIO 
+** --------------------------------------------------------------------------
+************************************************************************** */
+
+/**
+ * \brief   SE FIJA UN NUEVO RITMO DE CAMBIO
+ * \param NuevoRitmo	Nuevo ritmo en cambios por segundo
+ * \return		El ritmo del sistema.
+ *
+ * Se aplica el nuevo ritmo si está dentro de los límites. Si no es así,
+ * no se cambia y se devuelve el que tenía anteriormente.
+ *
+ */
+
+uint32_t PLANTILLA_SetRitmo(uint32_t NuevoRitmo)
+{
+
+	/* --- COMPRUEBA LA VALIDEZ DEL PARÁMETRO ---------------------------- */
+
+    if( (PLANTILLA_MAXRITMO <= NuevoRitmo) &&
+	    (PLANTILLA_MINRITMO >= NuevoRitmo) )
+    {
+		RitmoCambio = NuevoRitmo;
+	}
+
+    /* --- FINAL DE INICIALIZACIONES ------------------------------------- */
+	
+	return(RitmoCambio);
+}
+
+
+/* ##########################################################################
+ * ##########################################################################
+ * ####################################################################### */
+
+/*
+ * \file
+ *
+ * # DESCRIPCIÓN
+ *
+ * Este módulo implementa una señal de salida síncrona con la llama a la 
+ * función de tratamiento de la interrupción periódica.
+ * Cada cierto número de ciclos, cambia la salida de un puerto.
+ *
+ * Este módulo se ha escrito como ejemplo de estructura estándar.
+ *
+ * El estilo está basado en K&R con algunos cambios
+ * El sangrado (indentación) es de cuatro espacios (No se usan tabuldaores)
+ *
+ * Se Emplea el nombre del módulo para definir las funciones
+ * 
+ * Para las variables se emplea el sistema "Mayúsculas-Camello"
+ *
+ * Para las constantes se emplean siempre valores en mayúsculas
+ *
+ * ... AÑADIR COMENTARIOS A MEDIDA QUE APAREZCA LA NECESIDAD ...
+ *
+ */

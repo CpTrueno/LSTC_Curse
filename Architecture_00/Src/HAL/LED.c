@@ -7,21 +7,22 @@
 
 
 // -- Drivers
-#include "HAL\LED_.h"
-#include "HAL\LED.h"
+#include "LED_.h"
+//#include "LED.h"
 
 // -- System
-#include "SYS\SYSTEM_.h"
-#include "SYS\SYSTEM.h"	//Tengo dudas de si va en esta capa - CREO que NO le TOCA
+#include "SYSTEM_.h"
+#include "SYSTEM.h"	//Tengo dudas de si va en esta capa - CREO que NO le TOCA
 
-#include "SYS\CORTEXM_TYPES.h"
-#include "SYS\STM32F042_REGS_.h"
-#include "SYS\CORTEX_M0_.h"
+#include "CORTEXM_TYPES.h"
+#include "STM32F042_REGS_.h"
+#include "CORTEX_M0_.h"
 
 /* ****************************************************************************
  * DEFINICIONES Y CONSTANTES
  *************************************************************************** */
 
+#define LED_PCB 0x00000008
 
 /* ***************************************************************************
  * VARIABLES
@@ -43,7 +44,7 @@ void LED_Ini(){
 
 }
 
-void SysTick_Handler()
+void LED_per()
 {
 static uint32_t phase;
     /* --- EXTRACCIÓN DE MÁSCARA ----------------------------------------- */
@@ -53,11 +54,13 @@ static uint32_t phase;
 
     if ((mask & ImageLED) == 0)
     {
-		*GPIOB_ODR &= ~0x00000008;		/* PB3 a nivel bajo */
+    	//*GPIOB_ODR &= ~0x00000008;		/* PB3 a nivel bajo */
+    	*GPIOB_ODR &= ~LED_PCB;
     }
-    else
+	else
     {
-		*GPIOB_ODR |= 0x00000008;		/* PB3 a nivel bajo */
+		//*GPIOB_ODR |= 0x00000008;		/* PB3 a nivel bajo */
+		*GPIOB_ODR |= LED_PCB;
     }
     /* --- INCREMENTO DE FASE -------------------------------------------- */
     ++phase;

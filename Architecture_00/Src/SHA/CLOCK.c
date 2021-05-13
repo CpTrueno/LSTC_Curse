@@ -6,16 +6,16 @@
  */
 
 // -- Drivers
-#include "SHA\CLOCK_.h"
-#include "SHA\CLOCK.h"
+#include "CLOCK_.h"
+#include "CLOCK.h"
 
 // -- System
-#include "SYS\SYSTEM_.h"
-#include "SYS\SYSTEM.h"	//Tengo dudas de si va en esta capa - CREO que NO le TOCA
+#include "SYSTEM_.h"
+#include "SYSTEM.h"	//Tengo dudas de si va en esta capa - CREO que NO le TOCA
 
-//#include "SYS\CORTEXM_TYPES.h"
-#include "SYS\STM32F042_REGS_.h"
-#include "SYS\CORTEX_M0_.h"
+//#include "CORTEXM_TYPES.h"
+#include "STM32F042_REGS_.h"
+#include "CORTEX_M0_.h"
 #include <STDINT.H>
 
 /* ****************************************************************************
@@ -36,7 +36,7 @@
  * INICIALIZACIONES HARDWARE
  * ************************************************************************* */
 
-void CLOCK_Ini(uint32_t CLK, uint32_t P_DIV){
+void CLOCK_Set_Timer_1ms(uint32_t CLK, uint32_t P_DIV){
 
     /* ---- INICIALIZACIONES: TEMPORIZADOR DE SISTEMA ---------------------- */
 

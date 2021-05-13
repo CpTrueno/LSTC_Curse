@@ -1,10 +1,10 @@
-13:36:14 **** Incremental Build of configuration Debug for project Architecture_00 ****
+15:11:36 **** Incremental Build of configuration Debug for project Architecture_00 ****
 make -j4 all 
 arm-none-eabi-size   Architecture_00.elf 
    text	   data	    bss	    dec	    hex	filename
-   1168	      8	   1576	   2752	    ac0	Architecture_00.elf
+   1516	      8	   1608	   3132	    c3c	Architecture_00.elf
 Finished building: default.size.stdout
  
 
-13:36:14 Build Finished. 0 errors, 0 warnings. (took 605ms)
+15:11:37 Build Finished. 0 errors, 0 warnings. (took 734ms)
 

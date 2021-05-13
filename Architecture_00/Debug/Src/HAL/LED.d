@@ -1,20 +1,25 @@
-Src/HAL/LED.o: ../Src/HAL/LED.c ../Inc/HAL\LED_.h ../Inc/HAL\LED.h \
- ../Inc/SYS\SYSTEM_.h ../Inc/SYS\SYSTEM.h ../Inc/SYS\CORTEXM_TYPES.h \
- ../Inc/SYS\STM32F042_REGS_.h ../Inc/SYS\CORTEX_M0_.h \
- ../Inc/SYS\CORTEX_M0_.h
+Src/HAL/LED.o: ../Src/HAL/LED.c \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/LED_.h \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/Led.h \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/SYSTEM_.h \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/SYSTEM.h \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/CORTEXM_TYPES.h \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/STM32F042_REGS_.h \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/CORTEX_M0_.h \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/CORTEX_M0_.h
 
-../Inc/HAL\LED_.h:
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/LED_.h:
 
-../Inc/HAL\LED.h:
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/Led.h:
 
-../Inc/SYS\SYSTEM_.h:
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/SYSTEM_.h:
 
-../Inc/SYS\SYSTEM.h:
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/SYSTEM.h:
 
-../Inc/SYS\CORTEXM_TYPES.h:
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/CORTEXM_TYPES.h:
 
-../Inc/SYS\STM32F042_REGS_.h:
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/STM32F042_REGS_.h:
 
-../Inc/SYS\CORTEX_M0_.h:
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/CORTEX_M0_.h:
 
-../Inc/SYS\CORTEX_M0_.h:
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SYS/CORTEX_M0_.h:

@@ -16,5 +16,5 @@ C_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Src/SYS/SYSTEM.o: ../Src/SYS/SYSTEM.c Src/SYS/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/SYS/SYSTEM.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/SHA" -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/SYS" -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/HAL" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/SYS/SYSTEM.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 

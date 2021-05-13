@@ -5,21 +5,21 @@
  *      Author: j.cespedes
  */
 // -- Drivers
-#include "HAL\ANALOG_.h"
-#include "HAL\BUZZ_.h"
-#include "HAL\CAN_.h"
-#include "HAL\I2C_.h"
-#include "HAL\LED_.h"
-#include "HAL\SERIE_.h"
-#include "HAL\SWITCH_.h"
+#include "ANALOG_.h"
+#include "BUZZ_.h"
+#include "CAN_.h"
+#include "I2C_.h"
+#include "LED_.h"
+#include "SERIE_.h"
+#include "SWITCH_.h"
 
 // -- System
-#include "SYS\SYSTEM_.h"
-#include "SYS\SYSTEM.h"
+#include "SYSTEM_.h"
+#include "SYSTEM.h"
 
-//#include "SYS\CORTEXM_TYPES.h"
-#include "SYS\STM32F042_REGS_.h"
-#include "SYS\CORTEX_M0_.h"
+//#include "CORTEXM_TYPES.h"
+#include "STM32F042_REGS_.h"
+#include "CORTEX_M0_.h"
 #include <STDINT.H>
 
 /* ****************************************************************************
@@ -34,7 +34,9 @@ void SWITCH_Ini(void);
 void CAN_Ini(void);
 void BUZZ_Ini(void);
 
-void CLOCK_Ini(uint32_t CLK, uint32_t P_DIV);
+void CLOCK_Set_Timer_1ms(uint32_t CLK, uint32_t P_DIV);
+
+void LED_per();
 
 #define CLK		8000000		/* 8MHz Velocidad del reloj en Hz */
 #define RITHM	1000		/* Periodo de interrupción */
@@ -58,7 +60,7 @@ void SYSTEM_Ini(){
 	*RCC_AHBENR |= 0x007E0000;  /* ENABLE ALL PORTS (COMMON) */
 
 	// Init Drivers
-	CLOCK_Ini(CLK,RITHM);
+	CLOCK_Set_Timer_1ms(CLK,RITHM);
 
 	ANALOG_Ini();
 	BUZZ_Ini();
@@ -70,6 +72,11 @@ void SYSTEM_Ini(){
 
 }
 
+
+void SysTick_Handler (){
+	LED_per();
+	SWITCH_per();
+}
 
 /* ##########################################################################
  * ########        APLICACIÓN        ########################################

@@ -9,5 +9,8 @@
 #define HAL_LED__H_
 
 void LED_Ini();
+void LED_per();
+
+#include "Led.h"
 
 #endif /* HAL_LED__H_ */
