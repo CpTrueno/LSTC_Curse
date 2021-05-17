@@ -43,7 +43,8 @@ void LED_Set(uint32_t stat);
 int SWITCH_Get_BTN_0();
 int SWITCH_Get_BTN_1();
 
-void Led_ON();
+void BTN_0_Led_ON();
+void BTN_1_Led_ON();
 
 /* ***************************************************************************
  * VARIABLES
@@ -62,18 +63,30 @@ int main(void)
 
     /* Loop forever */
 	while(1){
-		Led_ON();
+		BTN_0_Led_ON();
+		//BTN_1_Led_ON();
 	}
 }
 
 
-void Led_ON(){
+void BTN_0_Led_ON(){
 	if(SWITCH_Get_BTN_0()==0){
-			LED_Set(0x00FF00FF);
-		}
-		else if(SWITCH_Get_BTN_0()==1) {
-			LED_Set(0xAAAA1111);
-		}
-		else
-			LED_Set(0x00000000);
+		LED_Set(0x00FF00FF);
+	}
+	else if(SWITCH_Get_BTN_0()==1) {
+		LED_Set(0x33335555);
+	}
+	else
+		LED_Set(0x00000000);
+}
+
+void BTN_1_Led_ON(){
+	if(SWITCH_Get_BTN_1()==0){
+		LED_Set(0x55555555);
+	}
+	else if(SWITCH_Get_BTN_1()==1) {
+		LED_Set(0xFFFFFFFF);
+	}
+	else
+		LED_Set(0x00000000);
 }

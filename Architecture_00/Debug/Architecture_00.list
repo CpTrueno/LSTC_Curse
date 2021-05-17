@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  000105f4  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000007d0  00000000  00000000  0001061c  2**0
+ 12 .debug_info   000007e2  00000000  00000000  0001061c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000423  00000000  00000000  00010dec  2**0
+ 13 .debug_abbrev 00000423  00000000  00000000  00010dfe  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000210  00000000  00000000  00011210  2**3
+ 14 .debug_aranges 00000218  00000000  00000000  00011228  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000168  00000000  00000000  00011420  2**3
+ 15 .debug_ranges 00000170  00000000  00000000  00011440  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000024a9  00000000  00000000  00011588  2**0
+ 16 .debug_macro  000024af  00000000  00000000  000115b0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00003000  00000000  00000000  00013a31  2**0
+ 17 .debug_line   0000302a  00000000  00000000  00013a5f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0000abc9  00000000  00000000  00016a31  2**0
+ 18 .debug_str    0000abe3  00000000  00000000  00016a89  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000215fa  2**0
+ 19 .comment      00000053  00000000  00000000  0002166c  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000045c  00000000  00000000  00021650  2**2
+ 20 .debug_frame  00000478  00000000  00000000  000216c0  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -245,45 +245,46 @@ int main(void)
 
     /* Loop forever */
 	while(1){
-		Led_ON();
- 800022e:	f000 f801 	bl	8000234 <Led_ON>
+		BTN_0_Led_ON();
+ 800022e:	f000 f801 	bl	8000234 <BTN_0_Led_ON>
  8000232:	e7fc      	b.n	800022e <main+0xe>
 
-08000234 <Led_ON>:
+08000234 <BTN_0_Led_ON>:
+		//BTN_1_Led_ON();
 	}
 }
 
 
-void Led_ON(){
+void BTN_0_Led_ON(){
  8000234:	b580      	push	{r7, lr}
  8000236:	af00      	add	r7, sp, #0
 	if(SWITCH_Get_BTN_0()==0){
  8000238:	f000 f8e8 	bl	800040c <SWITCH_Get_BTN_0>
  800023c:	1e03      	subs	r3, r0, #0
- 800023e:	d104      	bne.n	800024a <Led_ON+0x16>
-			LED_Set(0x00FF00FF);
- 8000240:	4b0a      	ldr	r3, [pc, #40]	; (800026c <Led_ON+0x38>)
+ 800023e:	d104      	bne.n	800024a <BTN_0_Led_ON+0x16>
+		LED_Set(0x00FF00FF);
+ 8000240:	4b0a      	ldr	r3, [pc, #40]	; (800026c <BTN_0_Led_ON+0x38>)
  8000242:	0018      	movs	r0, r3
  8000244:	f000 f870 	bl	8000328 <LED_Set>
-		else if(SWITCH_Get_BTN_0()==1) {
-			LED_Set(0xAAAA1111);
-		}
-		else
-			LED_Set(0x00000000);
+	else if(SWITCH_Get_BTN_0()==1) {
+		LED_Set(0x33335555);
+	}
+	else
+		LED_Set(0x00000000);
 }
- 8000248:	e00c      	b.n	8000264 <Led_ON+0x30>
-		else if(SWITCH_Get_BTN_0()==1) {
+ 8000248:	e00c      	b.n	8000264 <BTN_0_Led_ON+0x30>
+	else if(SWITCH_Get_BTN_0()==1) {
  800024a:	f000 f8df 	bl	800040c <SWITCH_Get_BTN_0>
  800024e:	0003      	movs	r3, r0
  8000250:	2b01      	cmp	r3, #1
- 8000252:	d104      	bne.n	800025e <Led_ON+0x2a>
-			LED_Set(0xAAAA1111);
- 8000254:	4b06      	ldr	r3, [pc, #24]	; (8000270 <Led_ON+0x3c>)
+ 8000252:	d104      	bne.n	800025e <BTN_0_Led_ON+0x2a>
+		LED_Set(0x33335555);
+ 8000254:	4b06      	ldr	r3, [pc, #24]	; (8000270 <BTN_0_Led_ON+0x3c>)
  8000256:	0018      	movs	r0, r3
  8000258:	f000 f866 	bl	8000328 <LED_Set>
 }
- 800025c:	e002      	b.n	8000264 <Led_ON+0x30>
-			LED_Set(0x00000000);
+ 800025c:	e002      	b.n	8000264 <BTN_0_Led_ON+0x30>
+		LED_Set(0x00000000);
  800025e:	2000      	movs	r0, #0
  8000260:	f000 f862 	bl	8000328 <LED_Set>
 }
@@ -292,7 +293,7 @@ void Led_ON(){
  8000268:	bd80      	pop	{r7, pc}
  800026a:	46c0      	nop			; (mov r8, r8)
  800026c:	00ff00ff 	.word	0x00ff00ff
- 8000270:	aaaa1111 	.word	0xaaaa1111
+ 8000270:	33335555 	.word	0x33335555
 
 08000274 <ANALOG_Ini>:
 
@@ -505,7 +506,7 @@ void SERIE_Ini(){
 void SWITCH_Ini(){
  8000350:	b580      	push	{r7, lr}
  8000352:	af00      	add	r7, sp, #0
-    *GPIOB_MODER &= ~0x0000000F;	/* PB0 y PB1 como ... */
+    *GPIOB_MODER &= ~0x0000000F;	/* PB0 y PB1 como ... PINES D6 y D3 */
  8000354:	4b0c      	ldr	r3, [pc, #48]	; (8000388 <SWITCH_Ini+0x38>)
  8000356:	681a      	ldr	r2, [r3, #0]
  8000358:	4b0b      	ldr	r3, [pc, #44]	; (8000388 <SWITCH_Ini+0x38>)
@@ -533,7 +534,6 @@ void SWITCH_Ini(){
  800037c:	430a      	orrs	r2, r1
  800037e:	601a      	str	r2, [r3, #0]
 
-
 }
  8000380:	46c0      	nop			; (mov r8, r8)
  8000382:	46bd      	mov	sp, r7
@@ -547,12 +547,10 @@ void SWITCH_Ini(){
 void SWITCH_per(){
  8000390:	b580      	push	{r7, lr}
  8000392:	af00      	add	r7, sp, #0
-	}
-	else{
-		reg_btn_0[i] = 0;
-	}	*/
 
-	if((*GPIOB_IDR &(1<<1))){
+	static uint32_t i;
+
+	if(READ_D6){
  8000394:	4b19      	ldr	r3, [pc, #100]	; (80003fc <SWITCH_per+0x6c>)
  8000396:	681b      	ldr	r3, [r3, #0]
  8000398:	2202      	movs	r2, #2
@@ -577,10 +575,10 @@ void SWITCH_per(){
  80003b6:	50d1      	str	r1, [r2, r3]
 	}
 
-	if((*GPIOB_IDR &(2<<2))){
+	if(READ_D3){
  80003b8:	4b10      	ldr	r3, [pc, #64]	; (80003fc <SWITCH_per+0x6c>)
  80003ba:	681b      	ldr	r3, [r3, #0]
- 80003bc:	2208      	movs	r2, #8
+ 80003bc:	2201      	movs	r2, #1
  80003be:	4013      	ands	r3, r2
  80003c0:	d006      	beq.n	80003d0 <SWITCH_per+0x40>
 		reg_btn_1[i] = 1;
@@ -642,7 +640,7 @@ void SWITCH_Set(){
 int SWITCH_Get_BTN_0(){
  800040c:	b580      	push	{r7, lr}
  800040e:	af00      	add	r7, sp, #0
-	if(!(reg_btn_0[0]==1 && reg_btn_0[1]==1 && reg_btn_0[2]==1 && reg_btn_0[3]==1)){
+	if(!(reg_btn_0[0]==1 && reg_btn_0[1]==1 && reg_btn_0[2]==1 && reg_btn_0[3]==1)){		//reg_btn_0[0]==1 && reg_btn_0[1]==1 && reg_btn_0[2]==1 && reg_btn_0[3]==1
  8000410:	4b13      	ldr	r3, [pc, #76]	; (8000460 <SWITCH_Get_BTN_0+0x54>)
  8000412:	681b      	ldr	r3, [r3, #0]
  8000414:	2b01      	cmp	r3, #1
@@ -684,9 +682,10 @@ int SWITCH_Get_BTN_0(){
  8000454:	2300      	movs	r3, #0
  8000456:	e000      	b.n	800045a <SWITCH_Get_BTN_0+0x4e>
 	}
-	else
-		return 2;
- 8000458:	2302      	movs	r3, #2
+	else{
+		return 'E';
+ 8000458:	2345      	movs	r3, #69	; 0x45
+	}
 }
  800045a:	0018      	movs	r0, r3
  800045c:	46bd      	mov	sp, r7

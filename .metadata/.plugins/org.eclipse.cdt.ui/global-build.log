@@ -1,6 +1,6 @@
-15:11:31 **** Incremental Build of configuration Debug for project Architecture_00 ****
+13:26:12 **** Incremental Build of configuration Debug for project Architecture_00 ****
 make -j4 all 
-arm-none-eabi-gcc "../Src/APP/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/SHA" -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/SYS" -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/HAL" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/APP/main.d" -MT"Src/APP/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/APP/main.o"
+arm-none-eabi-gcc "../Src/HAL/SWITCH.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/SHA" -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/SYS" -I"Q:/06.Cursos y formacion/202104-Curso de Software embebido/3-Carpetas de usuarios/Jose Maria/Architecture_00/Inc/HAL" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/HAL/SWITCH.d" -MT"Src/HAL/SWITCH.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/HAL/SWITCH.o"
 arm-none-eabi-gcc -o "Architecture_00.elf" @"objects.list"   -mcpu=cortex-m0 -T"Q:\06.Cursos y formacion\202104-Curso de Software embebido\3-Carpetas de usuarios\Jose Maria\Architecture_00\STM32F042K6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Architecture_00.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Architecture_00.elf
  
@@ -11,17 +11,10 @@ arm-none-eabi-size   Architecture_00.elf
    text	   data	    bss	    dec	    hex	filename
    1516	      8	   1608	   3132	    c3c	Architecture_00.elf
 Finished building: default.size.stdout
-Finished building: Architecture_00.hex
-Finished building: Architecture_00.list
+ 
 Finished building: Architecture_00.bin
+Finished building: Architecture_00.hex
  
  
- 
- 
-15:11:36 **** Incremental Build of configuration Debug for project Architecture_00 ****
-make -j4 all 
-arm-none-eabi-size   Architecture_00.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1516	      8	   1608	   3132	    c3c	Architecture_00.elf
-Finished building: default.size.stdout
+Finished building: Architecture_00.list
  
