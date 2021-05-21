@@ -1,0 +1,22 @@
+/*
+ * SYSTEM.h
+ *
+ *  Created on: May 7, 2021
+ *      Author: j.cespedes
+ */
+
+#ifndef SYS_SYSTEM_H_
+#define SYS_SYSTEM_H_
+
+void SYSTEM_Ini(void);
+
+#include "ANALOG.h"
+#include "BUZZ.h"
+#include "CAN.h"
+#include "I2C.h"
+#include "LED.h"
+#include "SERIE.h"
+#include "SWITCH.h"
+
+
+#endif /* SYS_SYSTEM_H_ */

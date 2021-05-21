@@ -12,5 +12,19 @@ void LED_Ini();
 void LED_per();
 
 #include "Led.h"
+#include "GPIO_.h"
+
+
+/* DEFINE GPIO PUPDR */
+#define NO_PULL		00
+#define PULL_UP		01
+#define PULL_DOWN	10
+#define RESERVED	11
+
+/* DEFINE GPIO MODER */
+#define INPUT		00
+#define OUTPUT		01
+#define ALTERNATE	10
+#define ANALOG		11
 
 #endif /* HAL_LED__H_ */

@@ -1,5 +1,8 @@
-SWITCH.c:53:6:SWITCH_Ini	8	static
-SWITCH.c:62:6:SWITCH_per	8	static
-SWITCH.c:97:6:SWITCH_Set	8	static
-SWITCH.c:101:5:SWITCH_Get_BTN_0	8	static
-SWITCH.c:113:5:SWITCH_Get_BTN_1	8	static
+SWITCH.c:84:6:SWITCH_Ini	8	static
+SWITCH.c:113:6:SWITCH_per	8	static
+SWITCH.c:175:10:SWITCH_Get_AutoRepeat_1	8	static
+SWITCH.c:179:10:SWITCH_Get_AutoRepeat_2	8	static
+SWITCH.c:184:10:SWITCH_Get_BeforeState_1	8	static
+SWITCH.c:188:10:SWITCH_Get_BeforeState_2	8	static
+SWITCH.c:191:10:SWITCH_Get_BTN_0	8	static
+SWITCH.c:204:10:SWITCH_Get_BTN_1	8	static

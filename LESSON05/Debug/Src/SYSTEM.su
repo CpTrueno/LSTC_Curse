@@ -1,0 +1,5 @@
+SYSTEM.c:75:10:SYSTEM_Ini	16	static
+SYSTEM.c:120:6:SysTick_Handler	8	static
+SYSTEM.c:158:10:SYSTEM_GetTiempoON	8	static
+SYSTEM.c:169:10:SISTEM_GetTimer	16	static
+SYSTEM.c:193:10:SISTEM_SetTimer	16	static

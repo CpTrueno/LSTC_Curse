@@ -1,0 +1,13 @@
+/*
+ * GPIO_.h
+ *
+ *  Created on: 20 may. 2021
+ *      Author: j.cespedes
+ */
+
+#ifndef HAL_GPIO__H_
+#define HAL_GPIO__H_
+
+
+
+#endif /* HAL_GPIO__H_ */

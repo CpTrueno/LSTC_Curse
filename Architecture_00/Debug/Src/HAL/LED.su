@@ -1,4 +1,4 @@
-LED.c:40:6:LED_Ini	8	static
-LED.c:47:6:LED_per	16	static
-LED.c:78:7:LED_Set	16	static
-LED.c:83:6:LED_Get	8	static
+LED.c:44:6:LED_Ini	8	static
+LED.c:57:6:LED_per	16	static
+LED.c:92:7:LED_Set	16	static
+LED.c:97:6:LED_Get	8	static

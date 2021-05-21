@@ -8,7 +8,18 @@
 #ifndef HAL_SWITCH_H_
 #define HAL_SWITCH_H_
 
-int SWITCH_Get_BTN_0();
-int SWITCH_Get_BTN_1();
+#define SWITCH_BIT_ACTUALSTAT	(0x00000001)
+#define SWITCH_BIT_EDGEON		(0x00000010)
+#define SWITCH_BIT_EDGEOFF		(0x00000020)
+#define SWITCH_BIT_AUTOREPEAT	(0x00000100)
+
+#include "CORTEXM_TYPES.h"
+
+uint32_t SWITCH_Get_BTN_0();
+uint32_t SWITCH_Get_BTN_1();
+uint32_t SWITCH_Get_BeforeState_1();
+uint32_t SWITCH_Get_BeforeState_2();
+uint32_t SWITCH_Get_AutoRepeat_1();
+uint32_t SWITCH_Get_AutoRepeat_2();
 
 #endif /* HAL_SWITCH_H_ */

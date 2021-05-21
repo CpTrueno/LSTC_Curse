@@ -1,18 +1,33 @@
-/*
- * SWITCH.c
+/**
+ * \file
+ * \brief	MÓDULO DE CONTROL DE PULSADORES
  *
- *  Created on: May 7, 2021
- *      Author: j.cespedes
+ * \author	JM.Céspedes
+ * \date   MAY,19. 2021
+ *
+ * # HARDWARE
+ *
+ * | PUERTO | DESCRIPCIÓN                            |  PIN  |
+ * |--------|----------------------------------------|-------|
+ * |   PB0  | Entrada del pulsador #1                |  D3   |
+ * |   PB1  | Entrada del pulsador #2                |  D6   |
+ *
+ *
+ * # RECURSOS
+ *
+ * Puertos indicados en "HARDWARE"
+ *
+ * # NOTAS
+ *
  */
-
 
 // -- Drivers
 #include "SWITCH_.h"
 #include "SWITCH.h"
 
 // -- System
-#include "SYSTEM_.h"
-#include "SYSTEM.h"	//Tengo dudas de si va en esta capa - CREO que NO le TOCA
+/*#include "SYSTEM_.h"
+#include "SYSTEM.h"	//Tengo dudas de si va en esta capa - CREO que NO le TOCA*/
 
 #include "CORTEXM_TYPES.h"
 #include "STM32F042_REGS_.h"
@@ -31,15 +46,31 @@
  * move to upper 16 bits
  */
 
-#define READ_D6 (*GPIOB_IDR &(1<<1))	// Acceso al registro de lectura del pin PB1
-#define READ_D3 (*GPIOB_IDR &(1<<0))	// Acceso al registro de lectura del pin PB0
+#define READ_PB1 (*GPIOB_IDR &(1<<1))	// Acceso al registro de lectura del pin PB1
+#define READ_PB0 (*GPIOB_IDR &(1<<0))	// Acceso al registro de lectura del pin PB0
 
-static int32_t reg_btn_0 [4] = {0};
-static int32_t reg_btn_1 [4] = {0};
+#define PB0	0
+#define PB1	2
 
+#define MASK	0x00000FFF	/* Máscara de 12 bits (12 ms) */
+
+static uint32_t     switch1Input;	/* Estado de entrada para filtraje */
+static uint32_t     switch2Input;
+
+static uint32_t     switch1Stat;	/* Flasg de estado de la entrada */
+static uint32_t     switch2Stat;
+
+static uint32_t		switch1beforestate;
+static uint32_t		switch2beforestate;
+
+static uint32_t		switch1repeat;
+static uint32_t		switch2repeat;
 /* ***************************************************************************
  * VARIABLES
  ************************************************************************** */
+
+
+// struct GPIO BTN_1, BTN_2;
 
 
 /* ############################################################################
@@ -51,39 +82,87 @@ static int32_t reg_btn_1 [4] = {0};
  * ************************************************************************* */
 
 void SWITCH_Ini(){
-    *GPIOB_MODER &= ~0x0000000F;	/* PB0 y PB1 como ... PINES D6 y D3 */
-    *GPIOB_MODER |=  0x00000000;	/* ... entrada */
+	(*GPIOB_MODER |= (INPUT<<PB0)); 	/* PB0 y PB1 como ... PINES D6 y D3 */
+	(*GPIOB_MODER |= (INPUT<<PB1));		/* Utilizando el desplazamiento de bit */
 
-    *GPIOB_PUPDR &= ~0x0000000F;	/* PB0 y PB1 con ...*/
-    *GPIOB_PUPDR |=  0x00000005;	/* ... pull-up */
+    (*GPIOB_PUPDR &= ~(RESET_REG<<PB0));	// Reset config in PB0
+    (*GPIOB_PUPDR |= (PULL_UP<<PB0)); 		// Set pull-up in PB0
 
+    (*GPIOB_PUPDR &= ~(RESET_REG<<PB1));	// Reset config in PB1
+    (*GPIOB_PUPDR |= (PULL_UP<<PB1));		// Set pull-up in PB1
+
+    //  *GPIOB_MODER &= ~0x0000000F;				/* es obligatorio usar número impares para */
+    //  *GPIOB_MODER |=  0x00000000;				/* seleccionar las entradas */
+
+    //    *GPIOB_PUPDR &= ~0x0000000F;	/* PB0 y PB1 con ...*/
+    //    *GPIOB_PUPDR |=  0x00000005;	/* ... pull-up */
+
+    switch1Input = 0x00000000;			/* Inicialmente no pusada */
+    switch2Input = 0x00000000;			/* Inicialmente no pusada */
+
+    switch1Stat = 0x00000001;			/* Inicialmente no pusada */
+    switch2Stat = 0x00000001;			/* Inicialmente no pusada */
+
+    switch1beforestate = 0x00000000;			/* Inicialmente no pusada */
+    switch2beforestate = 0x00000000;			/* Inicialmente no pusada */
+
+    switch1repeat = 0x00000000;			/* Inicialmente no pusada */
+    switch2repeat = 0x00000000;			/* Inicialmente no pusada */
 }
 
 void SWITCH_per(){
 
-	static uint32_t i;
-
-	if(READ_D6){
-		reg_btn_0[i] = 1;
+	switch1Input = switch1Input << 1;
+	if((READ_PB1 != 0)){
+		switch1Input += 0;
 	}
 	else{
-		reg_btn_0[i] = 0;
+		switch1Input += 1;
 	}
 
-	if(READ_D3){
-		reg_btn_1[i] = 1;
+	switch2Input = switch2Input << 1;
+	if(READ_PB0 != 0){
+		switch2Input += 0;
 	}
 	else{
-		reg_btn_1[i] = 0;
+		switch2Input += 1;
 	}
 
-	if(i>=3){
-		i=0;
+	/* ------------------------------------------------------------------- */
+	/* --- ACTUALIZAR EL ESTADO ------------------------------------------ */
+	/* ------------------------------------------------------------------- */
+
+	//switch1beforestate = 0;
+
+	if( (switch1Input & MASK) == 0)
+	{
+		switch1Stat = 1;
 	}
-	else{
-		i++;
+	else if( (switch1Input & MASK) == MASK)
+	{
+		switch1Stat = 0;
 	}
 
+	if( (switch2Input & MASK) == 0)
+	{
+		switch2Stat = 1;
+	}
+	else if( (switch2Input & MASK) == MASK)
+	{
+		switch2Stat = 0;
+	}
+
+	if((switch1Input & SWITCH_BIT_EDGEOFF) == SWITCH_BIT_EDGEOFF)
+		switch1beforestate = SWITCH_BIT_EDGEOFF;
+	else if ((switch1Input & SWITCH_BIT_EDGEON) == SWITCH_BIT_EDGEON)
+		switch1beforestate = switch1Input & SWITCH_BIT_EDGEON;
+	else
+		switch1beforestate = 0;
+
+	if((switch1Input & SWITCH_BIT_AUTOREPEAT) == SWITCH_BIT_AUTOREPEAT)
+		switch1repeat = SWITCH_BIT_AUTOREPEAT;
+	else
+		switch1repeat = 0;
 }
 
 /* ##########################################################################
@@ -93,13 +172,24 @@ void SWITCH_per(){
 /* ****************************************************************************
  * DEVOLVER EL ESTADO DE LOS BOTONES
  * ************************************************************************* */
-
-void SWITCH_Set(){
-
+uint32_t SWITCH_Get_AutoRepeat_1(){
+	return switch1repeat;
 }
 
-int SWITCH_Get_BTN_0(){
-	if(!(reg_btn_0[0]==1 && reg_btn_0[1]==1 && reg_btn_0[2]==1 && reg_btn_0[3]==1)){		//reg_btn_0[0]==1 && reg_btn_0[1]==1 && reg_btn_0[2]==1 && reg_btn_0[3]==1
+uint32_t SWITCH_Get_AutoRepeat_2(){
+	return switch2repeat;
+}
+
+
+uint32_t SWITCH_Get_BeforeState_1(){
+	return switch1beforestate;
+}
+
+uint32_t SWITCH_Get_BeforeState_2(){
+	return switch2beforestate;
+}
+uint32_t SWITCH_Get_BTN_0(){
+/*	if(!(reg_btn_0[0]==1 && reg_btn_0[1]==1 && reg_btn_0[2]==1 && reg_btn_0[3]==1)){		//reg_btn_0[0]==1 && reg_btn_0[1]==1 && reg_btn_0[2]==1 && reg_btn_0[3]==1
 		return 1;
 	}
 	else if (!(reg_btn_0[0]==0 && reg_btn_0[1]==0 && reg_btn_0[2]==01 && reg_btn_0[3]==0)){
@@ -107,16 +197,18 @@ int SWITCH_Get_BTN_0(){
 	}
 	else{
 		return 'E';
-	}
+	}*/
+	return switch1Stat;
 }
 
-int SWITCH_Get_BTN_1(){
-	if(!(reg_btn_1[0]==1 && reg_btn_1[1]==1 && reg_btn_1[2]==1 && reg_btn_1[3]==1)){
+uint32_t SWITCH_Get_BTN_1(){
+/*	if(!(reg_btn_1[0]==1 && reg_btn_1[1]==1 && reg_btn_1[2]==1 && reg_btn_1[3]==1)){
 		return 1;
 	}
 	else if(!(reg_btn_1[0]==0 && reg_btn_1[1]==0 && reg_btn_1[2]==0 && reg_btn_1[3]==0)){
 		return 0;
 	}
 	else
-		return 'E';
+		return 'E'; */
+	return switch2Stat;
 }

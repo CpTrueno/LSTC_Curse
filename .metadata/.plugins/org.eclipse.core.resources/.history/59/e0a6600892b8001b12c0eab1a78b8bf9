@@ -1,0 +1,24 @@
+/*
+ * SWITCH_.h
+ *
+ *  Created on: May 7, 2021
+ *      Author: j.cespedes
+ */
+
+#ifndef HAL_SWITCH__H_
+#define HAL_SWITCH__H_
+
+void SWITCH_per();
+void SWITCH_Ini();
+
+#include "SWITCH.h"
+
+struct Button{
+	uint32_t Read_BTN0;
+	uint32_t Read_BTN1;
+	uint32_t Set_BTN0;
+	uint32_t Set_BTN1;
+};
+
+
+#endif /* HAL_SWITCH__H_ */

@@ -12,5 +12,6 @@ void SWITCH_per();
 void SWITCH_Ini();
 
 #include "SWITCH.h"
+#include "GPIO_.h"
 
 #endif /* HAL_SWITCH__H_ */

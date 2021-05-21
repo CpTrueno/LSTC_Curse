@@ -17,18 +17,11 @@
  ******************************************************************************
  */
 
-
-#include "ANALOG.h"
-#include "BUZZ.h"
-#include "CAN.h"
-#include "I2C.h"
-#include "LED.h"
-#include "SERIE.h"
-#include "SWITCH.h"
+#include "CORTEXM_TYPES.h"
 
 #include "SYSTEM.h"
-//#include "CORTEXM_TYPES.h"
-#include <STDINT.H>
+
+//#include <STDINT.H>
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
@@ -39,42 +32,106 @@
  *************************************************************************** */
 void SYSTEM_Ini(void);
 void LED_Set(uint32_t stat);
+uint32_t SISTEM_SetTimer(uint32_t timer, uint32_t time);
+uint32_t SISTEM_GetTimer(uint32_t timer);
+uint32_t SYSTEM_GetTiempoON();
 
-int SWITCH_Get_BTN_0();
-int SWITCH_Get_BTN_1();
+uint32_t SWITCH_Get_BTN_0();
+uint32_t SWITCH_Get_BTN_1();
+uint32_t SWITCH_Get_BeforeState_1();
+uint32_t SWITCH_Get_AutoRepeat_1();
+uint32_t SWITCH_Get_AutoRepeat_2();
 
 void BTN_0_Led_ON();
 void BTN_1_Led_ON();
+void BTN_Controls();
+void BTN_Diming();
+
 
 /* ***************************************************************************
  * VARIABLES
  ************************************************************************** */
-
-
+static uint32_t state_0;
+static uint32_t state_1;
+static uint32_t state_2;
+static uint32_t state_3;
 /* ****************************************************************************
  * APLICACIÓN
  *************************************************************************** */
 
 int main(void)
 {
+
 	SYSTEM_Ini();		// HW Init
 
 	LED_Set(0x00000000);		/* Estado del LED */
 
+	static uint32_t flag = 1;
+
     /* Loop forever */
 	while(1){
-		BTN_0_Led_ON();
+
+		state_0 = SWITCH_Get_BTN_0();
+		state_1 = SWITCH_Get_BTN_1();
+		state_2 = SWITCH_Get_BeforeState_1();
+		state_3 = SWITCH_Get_AutoRepeat_1();
+
+		if(state_3 != 0){
+			flag = 1;
+		}
+
+		if(state_3 == 0){
+			if ((state_0 == 0) && (state_2 == 0)){
+				//if((flag != 0)){
+					SISTEM_SetTimer(1,3000);
+					flag = 0;
+				//}
+			}
+		}
+		BTN_Diming();
+
+		//BTN_Controls();
+
+		//BTN_0_Led_ON();
 		//BTN_1_Led_ON();
 	}
 }
 
+void BTN_Diming(){
+
+	static uint32_t time_1;
+
+	time_1 = SISTEM_GetTimer(1);
+
+	if(time_1 != 0){
+		LED_Set(0xFFFFFFFF);
+	}
+	else{
+		LED_Set(0x00000000);
+	}
+}
+
+void BTN_Controls(){
+	if((state_0 == 0) && (state_1 == 0)){
+		LED_Set(0x00FF00FF);
+	}
+	else if(state_1 == 0){
+		LED_Set(0x55555555);
+	}
+	else if(state_0 == 0){
+		LED_Set(0xFFFFFFFF);
+	}
+	else{
+		LED_Set(0x00000000);
+	}
+}
 
 void BTN_0_Led_ON(){
 	if(SWITCH_Get_BTN_0()==0){
-		LED_Set(0x00FF00FF);
+		LED_Set(0x00000000);
 	}
 	else if(SWITCH_Get_BTN_0()==1) {
-		LED_Set(0x33335555);
+		LED_Set(0x55555555);
 	}
 	else
 		LED_Set(0x00000000);
@@ -82,7 +139,7 @@ void BTN_0_Led_ON(){
 
 void BTN_1_Led_ON(){
 	if(SWITCH_Get_BTN_1()==0){
-		LED_Set(0x55555555);
+		LED_Set(0x00000000);
 	}
 	else if(SWITCH_Get_BTN_1()==1) {
 		LED_Set(0xFFFFFFFF);

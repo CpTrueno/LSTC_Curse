@@ -4,20 +4,13 @@
  *  Created on: May 7, 2021
  *      Author: j.cespedes
  */
-// -- Drivers
-#include "ANALOG_.h"
-#include "BUZZ_.h"
-#include "CAN_.h"
-#include "I2C_.h"
-#include "LED_.h"
-#include "SERIE_.h"
-#include "SWITCH_.h"
 
-// -- System
+// -- System Drivers
 #include "SYSTEM_.h"
-#include "SYSTEM.h"
 
-//#include "CORTEXM_TYPES.h"
+
+//#include <STM32F042_VECT_.h>
+#include "CORTEXM_TYPES.h"
 #include "STM32F042_REGS_.h"
 #include "CORTEX_M0_.h"
 #include <STDINT.H>
@@ -45,6 +38,10 @@ void LED_per();
  * VARIABLES
  ************************************************************************** */
 
+static uint32_t tiempoon;
+
+static uint32_t tiempo1;
+static uint32_t tiempo2;
 
 /* ############################################################################
  * ########        SISTEMA        #############################################
@@ -76,6 +73,78 @@ void SYSTEM_Ini(){
 void SysTick_Handler (){
 	LED_per();
 	SWITCH_per();
+
+
+	/* --- TEMPORIZADOR DE TIEMPO ACTIVO --------------------------------- */
+	++tiempoon;
+	/* --- TEMPORIZADORES DE APLICACIÓN ---------------------------------- */
+	if(tiempo1 != 0)
+	{
+		--tiempo1;
+	}
+	if(tiempo2 != 0)
+	{
+		--tiempo2;
+	}
+}
+
+/* **************************************************************************
+ * LEER EL TIEMPO ACTIVO
+ * --------------------------------------------------------------------------
+ * *********************************************************************** */
+
+uint32_t SYSTEM_GetTiempoON()
+{
+    return(tiempoon);
+}
+
+
+/* **************************************************************************
+ * LEER UN TEMPORIZADOR DE SISTEMA
+ * --------------------------------------------------------------------------
+ * *********************************************************************** */
+
+uint32_t SISTEM_GetTimer(uint32_t timer)
+{
+    switch(timer)
+    {
+    case SYSTEM_ID_TIMER1:
+    	return(tiempo1);
+    	break;
+
+    case SYSTEM_ID_TIMER2:
+    	return(tiempo2);
+    	break;
+
+    default:
+    	return(0xFFFFFFFF);
+    	break;
+    }
+}
+
+
+/* **************************************************************************
+ * ESCRIBIR UN TEMPORIZADOR DE SISTEMA
+ * --------------------------------------------------------------------------
+ * *********************************************************************** */
+
+uint32_t SISTEM_SetTimer(uint32_t timer, uint32_t time)
+{
+    switch(timer)
+    {
+    case SYSTEM_ID_TIMER1:
+    	tiempo1 = time;
+    	break;
+
+    case SYSTEM_ID_TIMER2:
+    	tiempo2 = time;
+    	break;
+
+    default:
+    	time = 0xFFFFFFFF;
+    	break;
+    }
+    return(time);
 }
 
 

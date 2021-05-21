@@ -1,0 +1,7 @@
+"Src/LED.o"
+"Src/SWITCH.o"
+"Src/SYSTEM.o"
+"Src/main.o"
+"Src/syscalls.o"
+"Src/sysmem.o"
+"Startup/startup_stm32f042k6tx.o"
