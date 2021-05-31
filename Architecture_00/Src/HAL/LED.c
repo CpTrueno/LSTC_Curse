@@ -43,38 +43,26 @@ struct GPIO LED;
 
 void LED_Ini(){
 
-	*GPIOB_MODER &= ~0x000000C0;	/* PB3 como ... */
-	*GPIOB_MODER |=  0x00000080;	/* ... salida */
-
-	LED.Mode = (*GPIOB_MODER &= ~(RESET_REG<<6));
-	LED.Mode = (*GPIOB_MODER |= (OUTPUT<<6));
-
-//    *GPIOB_MODER &= ~0x000000C0;	/* PB3 como ... */
-    //*GPIOB_MODER |=  0x00000040;	/* ... salida */
+	LED.Mode = (*GPIOB_MODER &= ~(RESET_REG<<6));            /* PB3 como ... */
+	LED.Mode = (*GPIOB_MODER |= (OUTPUT<<6));                /* ... salida */
 
 }
+
 
 void LED_per()
 {
 static uint32_t phase;
     /* --- EXTRACCIÓN DE MÁSCARA ----------------------------------------- */
     uint32_t mask = 1 << ((phase/125) % 32);
-    //uint32_t led;
-    /* --- APLICACIÓN DEL ESTADO ACTUAL AL LED --------------------------- */
 
+    /* --- APLICACIÓN DEL ESTADO ACTUAL AL LED --------------------------- */
     if ((mask & ImageLED) == 0)
     {
-									/* PB3 a nivel bajo */
-    	//*GPIOB_ODR &= ~LED_PCB;
-    	LED_OFF;
-    	//*GPIOB_ODR &= (0<<3);
+    	LED_OFF;					/* PB3 a nivel bajo */
     }
 	else
     {
-									/* PB3 a nivel alto */
-		//*GPIOB_ODR |= LED_PCB;
-		LED_ON;
-		//*GPIOB_ODR |= (1<<3);
+		LED_ON;						/* PB3 a nivel alto */
     }
     /* --- INCREMENTO DE FASE -------------------------------------------- */
     ++phase;
@@ -91,10 +79,12 @@ static uint32_t phase;
 
 void  LED_Set(uint32_t stat){
 	ImageLED = stat;
-//	return(stat);
 }
 
-void LED_Get(){
-
+void LED_Set_On(){
+	LED_ON;
 }
 
+void LED_Set_Off(){
+	LED_OFF;
+}

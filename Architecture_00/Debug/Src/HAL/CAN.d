@@ -19,6 +19,7 @@ Src/HAL/CAN.o: ../Src/HAL/CAN.c ../Inc/HAL\CAN_.h ../Inc/HAL\CAN.h \
  Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/LED.h \
  Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/SERIE.h \
  Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/SWITCH.h \
+ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SHA/CLOCK.h \
  ../Inc/SYS\SYSTEM.h ../Inc/SYS\CORTEXM_TYPES.h \
  ../Inc/SYS\STM32F042_REGS_.h ../Inc/SYS\CORTEX_M0_.h \
  ../Inc/SYS\CORTEX_M0_.h
@@ -66,6 +67,8 @@ Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ 
 Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/SERIE.h:
 
 Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/HAL/SWITCH.h:
+
+Q:/06.Cursos\ y\ formacion/202104-Curso\ de\ Software\ embebido/3-Carpetas\ de\ usuarios/Jose\ Maria/Architecture_00/Inc/SHA/CLOCK.h:
 
 ../Inc/SYS\SYSTEM.h:
 

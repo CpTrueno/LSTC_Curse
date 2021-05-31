@@ -18,7 +18,16 @@
 #include <STM32F042_VECT_.h>
 #include "CORTEXM_TYPES.h"
 #include "STM32F042_REGS_.h"
+
+#include "RELOJ_.h"
+
+#include "ANALOG_.h"
+#include "BUZZER_.h"
+#include "CAN_.h"
+#include "I2CS_.h"
 #include "LED_.h"
+#include "LEDD_.h"
+#include "SERIE_.h"
 #include "SWITCH_.h"
 
 #include "SYSTEM.h"
@@ -27,7 +36,8 @@
  * DEFINICIONES Y CONSTANTES
  ************************************************************************* */
 
-#define     CLOCK	(8000000)
+#define		DEBUGPIN		/* COmentar para quitar depuración por pin */
+
 #define 	RITHM	(1000)			/* 1kHz para SysTick */
 
 /* **************************************************************************
@@ -77,7 +87,7 @@ uint32_t SYSTEM_Ini(uint32_t prmi)
 
 	/* --- INICIALIZACIÓN DE RELOJ --------------------------------------- */
 
-	// Pendiente. Se emplea el reloj de 8 MHz tras el arranque
+	RELOJ_Ini(0);
 
 	/* --- ACTIVAR TODOS LOS PUERTOS ------------------------------------- */
 
@@ -85,7 +95,13 @@ uint32_t SYSTEM_Ini(uint32_t prmi)
 
 	/* --- INICIALIZACIONES: MÓDULOS ------------------------------------- */
 
+	ANALOG_Ini(0);
+	BUZZER_Ini(0);
+	CAN_Ini(0);
+	I2CS_Ini(0);
+    LEDD_Ini(0);
     LED_Ini(0);
+    SERIE_Ini(0);
     SWITCH_Ini(0);
 
     /* --- INICIALIZACIONES: PUERTOS NO EMPLEADOS ------------------------ */
@@ -94,7 +110,7 @@ uint32_t SYSTEM_Ini(uint32_t prmi)
 
     /* ---- INICIALIZACIONES: TEMPORIZADOR DE SISTEMA -------------------- */
 
-    *STK_RVR = (CLOCK/RITHM) - 1;         /* Top value */
+    *STK_RVR = (RELOJ_GetFreq()/RITHM) - 1;         /* Top value */
 
     *STK_CSR = 0x0005;              /* Enable & select processor clock */
     *STK_CSR |= 0x0002;            /* Enable interrupt request */
@@ -122,7 +138,13 @@ void SysTick_Handler()
 
 	/* --- ACTUALIZACIÓN DE LOS MÓDULOS @ 1kHz --------------------------- */
 
+	ANALOG_Per();
+	BUZZER_Per();
+	CAN_Per();
+	I2CS_Per();
+	LEDD_Per();
 	LED_Per();
+	SERIE_Per();
 	SWITCH_Per();
 
 	/* --- TEMPORIZADOR DE TIEMPO ACTIVO --------------------------------- */

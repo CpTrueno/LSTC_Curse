@@ -1,0 +1,3 @@
+CAN.c:36:10:CAN_Ini	16	static
+CAN.c:46:6:CAN_Per	8	static
+CAN.c:56:6:CEC_CAN_IRQHandler	8	static

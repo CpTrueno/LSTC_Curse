@@ -7,4 +7,4 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Architecture_00/activeLaunchMod
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Architecture_00/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Blink-Led/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Blink-Led/activeLaunchTarget=null\:---
-org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LESSON05\ Debug/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:LESSON05\ Debug/activeLaunchMode=run

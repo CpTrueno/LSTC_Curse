@@ -10,6 +10,8 @@
 
 void LED_Ini();
 void LED_per();
+void LED_Set_On();
+void LED_Set_Off();
 
 #include "Led.h"
 #include "GPIO_.h"

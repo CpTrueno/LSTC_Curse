@@ -5,7 +5,13 @@
 #ifndef SYSTEM_H_
 #define SYSTEM_H_
 
+#include "ANALOG.h"
+#include "BUZZER.h"
+#include "CAN.h"
+#include "I2CS.h"
 #include "LED.h"
+#include "LEDD.h"
+#include "SERIE.h"
 #include "SWITCH.h"
 
 uint32_t SYSTEM_Ini(uint32_t prmi);

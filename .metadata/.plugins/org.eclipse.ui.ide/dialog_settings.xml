@@ -5,4 +5,13 @@
 	</section>
 	<section name="NewWizardAction">
 	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="Q:\06.Cursos y formacion\202104-Curso de Software embebido\3-Carpetas de usuarios\Jose Maria\LESSON05"/>
+		</list>
+	</section>
 </section>

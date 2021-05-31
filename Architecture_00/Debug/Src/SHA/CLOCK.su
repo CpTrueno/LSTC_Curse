@@ -1,3 +1,2 @@
-CLOCK.c:39:6:CLOCK_Set_Timer_1ms	16	static
-CLOCK.c:63:6:CLOCK_Set	8	static
-CLOCK.c:67:6:CLOCK_Get	8	static
+CLOCK.c:33:6:CLOCK_Ini	16	static
+CLOCK.c:62:10:CLOCK_GetFreq	8	static

@@ -36,70 +36,79 @@ uint32_t SISTEM_SetTimer(uint32_t timer, uint32_t time);
 uint32_t SISTEM_GetTimer(uint32_t timer);
 uint32_t SYSTEM_GetTiempoON();
 
-uint32_t SWITCH_Get_BTN_0();
-uint32_t SWITCH_Get_BTN_1();
-uint32_t SWITCH_Get_BeforeState_1();
-uint32_t SWITCH_Get_AutoRepeat_1();
-uint32_t SWITCH_Get_AutoRepeat_2();
+uint32_t SWITCH_GetStatus(uint32_t btn);
 
-void BTN_0_Led_ON();
-void BTN_1_Led_ON();
 void BTN_Controls();
-void BTN_Diming();
+void BTN_Timer();
 
+static void Test_SWSER(void);
 
 /* ***************************************************************************
  * VARIABLES
  ************************************************************************** */
 static uint32_t state_0;
 static uint32_t state_1;
-static uint32_t state_2;
-static uint32_t state_3;
+//static uint32_t state_2;
+
+static uint32_t flag = 1;
+
 /* ****************************************************************************
  * APLICACIÓN
  *************************************************************************** */
 
 int main(void)
 {
-
 	SYSTEM_Ini();		// HW Init
 
 	LED_Set(0x00000000);		/* Estado del LED */
 
-	static uint32_t flag = 1;
-
     /* Loop forever */
 	while(1){
 
-		state_0 = SWITCH_Get_BTN_0();
-		state_1 = SWITCH_Get_BTN_1();
-		state_2 = SWITCH_Get_BeforeState_1();
-		state_3 = SWITCH_Get_AutoRepeat_1();
-
-		if(state_3 != 0){
-			flag = 1;
-		}
-
-		if(state_3 == 0){
-			if ((state_0 == 0) && (state_2 == 0)){
-				//if((flag != 0)){
-					SISTEM_SetTimer(1,3000);
-					flag = 0;
-				//}
-			}
-		}
-		BTN_Diming();
-
+		Test_SWSER();
+		//BTN_Timer();
 		//BTN_Controls();
-
-		//BTN_0_Led_ON();
-		//BTN_1_Led_ON();
 	}
 }
 
-void BTN_Diming(){
+static void Test_SWSER(void)
+{
+	for(;;)
+	{
+		uint32_t stat1 = SWITCH_GetStatus(0);
+
+		if(stat1 & SWITCH_BIT_EDGEON)
+		{
+			SERIE_TxChar('1');
+		}
+		if(stat1 & SWITCH_BIT_EDGEOFF)
+		{
+			SERIE_TxChar('0');
+		}
+		if(stat1 & SWITCH_BIT_FLAGLONGON)
+		{
+			SERIE_TxChar('L');
+		}
+		if(stat1 & SWITCH_BIT_FLAGREPEAT)
+		{
+			SERIE_TxChar('r');
+		}
+	}
+}
+
+void BTN_Timer(){
 
 	static uint32_t time_1;
+
+	state_0 = SWITCH_GetStatus(0);
+	state_1 = SWITCH_GetStatus(1);
+
+	if((flag != 0)){
+			if(state_0 == SWITCH_BIT_EDGEOFF){
+				SISTEM_SetTimer(1,3000);
+				flag = 0;
+		}
+	}
 
 	time_1 = SISTEM_GetTimer(1);
 
@@ -108,42 +117,25 @@ void BTN_Diming(){
 	}
 	else{
 		LED_Set(0x00000000);
+		flag = 1;
 	}
 }
 
 void BTN_Controls(){
-	if((state_0 == 0) && (state_1 == 0)){
+
+	state_0 = SWITCH_GetStatus(0) & SWITCH_BIT_ACTUALSTAT;
+	state_1 = SWITCH_GetStatus(1) & SWITCH_BIT_ACTUALSTAT;
+
+	if((state_0 != 0) && (state_1 != 0)){
 		LED_Set(0x00FF00FF);
 	}
-	else if(state_1 == 0){
+	else if(state_1 != 0){
 		LED_Set(0x55555555);
 	}
-	else if(state_0 == 0){
-		LED_Set(0xFFFFFFFF);
-	}
-	else{
-		LED_Set(0x00000000);
-	}
-}
-
-void BTN_0_Led_ON(){
-	if(SWITCH_Get_BTN_0()==0){
-		LED_Set(0x00000000);
-	}
-	else if(SWITCH_Get_BTN_0()==1) {
-		LED_Set(0x55555555);
-	}
-	else
-		LED_Set(0x00000000);
-}
-
-void BTN_1_Led_ON(){
-	if(SWITCH_Get_BTN_1()==0){
-		LED_Set(0x00000000);
-	}
-	else if(SWITCH_Get_BTN_1()==1) {
+	else if(state_0 != 0){
 		LED_Set(0xFFFFFFFF);
 	}
 	else
 		LED_Set(0x00000000);
 }
+

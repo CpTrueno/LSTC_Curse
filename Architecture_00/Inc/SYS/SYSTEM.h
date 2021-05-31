@@ -17,6 +17,7 @@ void SYSTEM_Ini(void);
 #include "LED.h"
 #include "SERIE.h"
 #include "SWITCH.h"
+#include "CLOCK.h"
 
 #define SYSTEM_ID_TIMER1	(1)
 #define SYSTEM_ID_TIMER2	(2)

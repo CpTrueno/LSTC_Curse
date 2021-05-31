@@ -46,12 +46,15 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Src/APP/main.o
  .data          0x0000000000000000        0x0 Src/APP/main.o
  .bss           0x0000000000000000        0x0 Src/APP/main.o
+ .bss.state_0   0x0000000000000000        0x4 Src/APP/main.o
+ .bss.state_1   0x0000000000000000        0x4 Src/APP/main.o
+ .data.flag     0x0000000000000000        0x4 Src/APP/main.o
+ .text.BTN_Timer
+                0x0000000000000000       0x84 Src/APP/main.o
  .text.BTN_Controls
-                0x0000000000000000       0x60 Src/APP/main.o
- .text.BTN_0_Led_ON
-                0x0000000000000000       0x38 Src/APP/main.o
- .text.BTN_1_Led_ON
-                0x0000000000000000       0x36 Src/APP/main.o
+                0x0000000000000000       0x80 Src/APP/main.o
+ .bss.time_1.4253
+                0x0000000000000000        0x4 Src/APP/main.o
  .group         0x0000000000000000        0xc Src/APP/syscalls.o
  .group         0x0000000000000000        0xc Src/APP/syscalls.o
  .group         0x0000000000000000        0xc Src/APP/syscalls.o
@@ -273,7 +276,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x6a Src/HAL/ANALOG.o
  .debug_macro   0x0000000000000000      0x1df Src/HAL/ANALOG.o
  .debug_macro   0x0000000000000000       0x16 Src/HAL/ANALOG.o
- .debug_macro   0x0000000000000000       0x22 Src/HAL/ANALOG.o
+ .debug_macro   0x0000000000000000       0x28 Src/HAL/ANALOG.o
  .debug_macro   0x0000000000000000       0x10 Src/HAL/ANALOG.o
  .group         0x0000000000000000        0xc Src/HAL/BUZZ.o
  .group         0x0000000000000000        0xc Src/HAL/BUZZ.o
@@ -306,7 +309,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 Src/HAL/BUZZ.o
  .debug_macro   0x0000000000000000       0x3a Src/HAL/BUZZ.o
  .debug_macro   0x0000000000000000       0x34 Src/HAL/BUZZ.o
- .debug_macro   0x0000000000000000       0x22 Src/HAL/BUZZ.o
+ .debug_macro   0x0000000000000000       0x28 Src/HAL/BUZZ.o
  .debug_macro   0x0000000000000000       0x10 Src/HAL/BUZZ.o
  .debug_macro   0x0000000000000000       0x9a Src/HAL/BUZZ.o
  .debug_macro   0x0000000000000000      0xdc5 Src/HAL/BUZZ.o
@@ -339,7 +342,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 Src/HAL/CAN.o
  .debug_macro   0x0000000000000000       0x3a Src/HAL/CAN.o
  .debug_macro   0x0000000000000000       0x34 Src/HAL/CAN.o
- .debug_macro   0x0000000000000000       0x22 Src/HAL/CAN.o
+ .debug_macro   0x0000000000000000       0x28 Src/HAL/CAN.o
  .debug_macro   0x0000000000000000       0x10 Src/HAL/CAN.o
  .debug_macro   0x0000000000000000       0x9a Src/HAL/CAN.o
  .debug_macro   0x0000000000000000      0xdc5 Src/HAL/CAN.o
@@ -372,7 +375,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 Src/HAL/I2C.o
  .debug_macro   0x0000000000000000       0x3a Src/HAL/I2C.o
  .debug_macro   0x0000000000000000       0x34 Src/HAL/I2C.o
- .debug_macro   0x0000000000000000       0x22 Src/HAL/I2C.o
+ .debug_macro   0x0000000000000000       0x28 Src/HAL/I2C.o
  .debug_macro   0x0000000000000000       0x10 Src/HAL/I2C.o
  .debug_macro   0x0000000000000000       0x9a Src/HAL/I2C.o
  .debug_macro   0x0000000000000000      0xdc5 Src/HAL/I2C.o
@@ -391,7 +394,10 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Src/HAL/LED.o
  .data          0x0000000000000000        0x0 Src/HAL/LED.o
  .bss           0x0000000000000000        0x0 Src/HAL/LED.o
- .text.LED_Get  0x0000000000000000        0xa Src/HAL/LED.o
+ .text.LED_Set_On
+                0x0000000000000000       0x1c Src/HAL/LED.o
+ .text.LED_Set_Off
+                0x0000000000000000       0x18 Src/HAL/LED.o
  .debug_macro   0x0000000000000000      0xa8a Src/HAL/LED.o
  .debug_macro   0x0000000000000000       0x22 Src/HAL/LED.o
  .debug_macro   0x0000000000000000       0x8e Src/HAL/LED.o
@@ -414,17 +420,15 @@ Discarded input sections
  .group         0x0000000000000000        0xc Src/HAL/SERIE.o
  .group         0x0000000000000000        0xc Src/HAL/SERIE.o
  .group         0x0000000000000000        0xc Src/HAL/SERIE.o
- .group         0x0000000000000000        0xc Src/HAL/SERIE.o
- .group         0x0000000000000000        0xc Src/HAL/SERIE.o
- .group         0x0000000000000000        0xc Src/HAL/SERIE.o
- .group         0x0000000000000000        0xc Src/HAL/SERIE.o
  .text          0x0000000000000000        0x0 Src/HAL/SERIE.o
  .data          0x0000000000000000        0x0 Src/HAL/SERIE.o
  .bss           0x0000000000000000        0x0 Src/HAL/SERIE.o
- .text.SERIE_Set
+ .text.Buffer_Rx_Get
+                0x0000000000000000       0x48 Src/HAL/SERIE.o
+ .text.SERIE_Per
                 0x0000000000000000        0xa Src/HAL/SERIE.o
- .text.SERIE_Get
-                0x0000000000000000        0xa Src/HAL/SERIE.o
+ .text.SERIE_RxChar
+                0x0000000000000000       0x10 Src/HAL/SERIE.o
  .debug_macro   0x0000000000000000      0xa8a Src/HAL/SERIE.o
  .debug_macro   0x0000000000000000       0x22 Src/HAL/SERIE.o
  .debug_macro   0x0000000000000000       0x8e Src/HAL/SERIE.o
@@ -433,10 +437,6 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x6a Src/HAL/SERIE.o
  .debug_macro   0x0000000000000000      0x1df Src/HAL/SERIE.o
  .debug_macro   0x0000000000000000       0x16 Src/HAL/SERIE.o
- .debug_macro   0x0000000000000000       0x3a Src/HAL/SERIE.o
- .debug_macro   0x0000000000000000       0x34 Src/HAL/SERIE.o
- .debug_macro   0x0000000000000000       0x22 Src/HAL/SERIE.o
- .debug_macro   0x0000000000000000       0x10 Src/HAL/SERIE.o
  .debug_macro   0x0000000000000000       0x9a Src/HAL/SERIE.o
  .debug_macro   0x0000000000000000      0xdc5 Src/HAL/SERIE.o
  .group         0x0000000000000000        0xc Src/HAL/SWITCH.o
@@ -454,12 +454,10 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Src/HAL/SWITCH.o
  .data          0x0000000000000000        0x0 Src/HAL/SWITCH.o
  .bss           0x0000000000000000        0x0 Src/HAL/SWITCH.o
- .text.SWITCH_Get_AutoRepeat_2
-                0x0000000000000000       0x14 Src/HAL/SWITCH.o
- .text.SWITCH_Get_BeforeState_2
-                0x0000000000000000       0x14 Src/HAL/SWITCH.o
+ .text.SWITCH_per_old
+                0x0000000000000000      0x1a8 Src/HAL/SWITCH.o
+ .bss.i.4223    0x0000000000000000        0x4 Src/HAL/SWITCH.o
  .debug_macro   0x0000000000000000      0xa8a Src/HAL/SWITCH.o
- .debug_macro   0x0000000000000000       0x22 Src/HAL/SWITCH.o
  .debug_macro   0x0000000000000000       0x22 Src/HAL/SWITCH.o
  .debug_macro   0x0000000000000000       0x8e Src/HAL/SWITCH.o
  .debug_macro   0x0000000000000000       0x51 Src/HAL/SWITCH.o
@@ -469,10 +467,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 Src/HAL/SWITCH.o
  .debug_macro   0x0000000000000000       0x9a Src/HAL/SWITCH.o
  .debug_macro   0x0000000000000000      0xdc5 Src/HAL/SWITCH.o
- .group         0x0000000000000000        0xc Src/SHA/CLOCK.o
- .group         0x0000000000000000        0xc Src/SHA/CLOCK.o
- .group         0x0000000000000000        0xc Src/SHA/CLOCK.o
- .group         0x0000000000000000        0xc Src/SHA/CLOCK.o
+ .debug_macro   0x0000000000000000       0x28 Src/HAL/SWITCH.o
  .group         0x0000000000000000        0xc Src/SHA/CLOCK.o
  .group         0x0000000000000000        0xc Src/SHA/CLOCK.o
  .group         0x0000000000000000        0xc Src/SHA/CLOCK.o
@@ -486,10 +481,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Src/SHA/CLOCK.o
  .data          0x0000000000000000        0x0 Src/SHA/CLOCK.o
  .bss           0x0000000000000000        0x0 Src/SHA/CLOCK.o
- .text.CLOCK_Set
-                0x0000000000000000        0xa Src/SHA/CLOCK.o
- .text.CLOCK_Get
-                0x0000000000000000        0xa Src/SHA/CLOCK.o
  .debug_macro   0x0000000000000000      0xa8a Src/SHA/CLOCK.o
  .debug_macro   0x0000000000000000       0x22 Src/SHA/CLOCK.o
  .debug_macro   0x0000000000000000       0x8e Src/SHA/CLOCK.o
@@ -498,10 +489,6 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x6a Src/SHA/CLOCK.o
  .debug_macro   0x0000000000000000      0x1df Src/SHA/CLOCK.o
  .debug_macro   0x0000000000000000       0x16 Src/SHA/CLOCK.o
- .debug_macro   0x0000000000000000       0x3a Src/SHA/CLOCK.o
- .debug_macro   0x0000000000000000       0x34 Src/SHA/CLOCK.o
- .debug_macro   0x0000000000000000       0x22 Src/SHA/CLOCK.o
- .debug_macro   0x0000000000000000       0x10 Src/SHA/CLOCK.o
  .debug_macro   0x0000000000000000       0x9a Src/SHA/CLOCK.o
  .debug_macro   0x0000000000000000      0xdc5 Src/SHA/CLOCK.o
  .group         0x0000000000000000        0xc Src/SYS/SYSTEM.o
@@ -523,6 +510,10 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 Src/SYS/SYSTEM.o
  .text.SYSTEM_GetTiempoON
                 0x0000000000000000       0x14 Src/SYS/SYSTEM.o
+ .text.SISTEM_GetTimer
+                0x0000000000000000       0x38 Src/SYS/SYSTEM.o
+ .text.SISTEM_SetTimer
+                0x0000000000000000       0x44 Src/SYS/SYSTEM.o
  .debug_macro   0x0000000000000000      0xa8a Src/SYS/SYSTEM.o
  .debug_macro   0x0000000000000000       0x22 Src/SYS/SYSTEM.o
  .debug_macro   0x0000000000000000       0x8e Src/SYS/SYSTEM.o
@@ -533,7 +524,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 Src/SYS/SYSTEM.o
  .debug_macro   0x0000000000000000       0x3a Src/SYS/SYSTEM.o
  .debug_macro   0x0000000000000000       0x34 Src/SYS/SYSTEM.o
- .debug_macro   0x0000000000000000       0x22 Src/SYS/SYSTEM.o
+ .debug_macro   0x0000000000000000       0x28 Src/SYS/SYSTEM.o
  .debug_macro   0x0000000000000000       0x10 Src/SYS/SYSTEM.o
  .debug_macro   0x0000000000000000       0x9a Src/SYS/SYSTEM.o
  .debug_macro   0x0000000000000000      0xdc5 Src/SYS/SYSTEM.o
@@ -645,7 +636,7 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008000000                g_pfnVectors
                 0x00000000080000c0                . = ALIGN (0x4)
 
-.text           0x00000000080000c0      0x768
+.text           0x00000000080000c0      0xa18
                 0x00000000080000c0                . = ALIGN (0x4)
  *(.text)
  .text          0x00000000080000c0       0x48 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
@@ -657,248 +648,244 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000000800021c                __aeabi_idiv0
                 0x000000000800021c                __aeabi_ldiv0
  *(.text*)
- .text.main     0x0000000008000220       0x8c Src/APP/main.o
+ .text.main     0x0000000008000220       0x14 Src/APP/main.o
                 0x0000000008000220                main
- .text.BTN_Diming
-                0x00000000080002ac       0x34 Src/APP/main.o
-                0x00000000080002ac                BTN_Diming
+ .text.Test_SWSER
+                0x0000000008000234       0x4c Src/APP/main.o
  .text.ANALOG_Ini
-                0x00000000080002e0        0xa Src/HAL/ANALOG.o
-                0x00000000080002e0                ANALOG_Ini
+                0x0000000008000280        0xa Src/HAL/ANALOG.o
+                0x0000000008000280                ANALOG_Ini
  .text.BUZZ_Ini
-                0x00000000080002ea        0xa Src/HAL/BUZZ.o
-                0x00000000080002ea                BUZZ_Ini
- .text.CAN_Ini  0x00000000080002f4        0xa Src/HAL/CAN.o
-                0x00000000080002f4                CAN_Ini
- .text.I2C_Ini  0x00000000080002fe        0xa Src/HAL/I2C.o
-                0x00000000080002fe                I2C_Ini
- .text.LED_Ini  0x0000000008000308       0x50 Src/HAL/LED.o
-                0x0000000008000308                LED_Ini
- .text.LED_per  0x0000000008000358       0x64 Src/HAL/LED.o
-                0x0000000008000358                LED_per
- .text.LED_Set  0x00000000080003bc       0x1c Src/HAL/LED.o
-                0x00000000080003bc                LED_Set
+                0x000000000800028a        0xa Src/HAL/BUZZ.o
+                0x000000000800028a                BUZZ_Ini
+ .text.CAN_Ini  0x0000000008000294        0xa Src/HAL/CAN.o
+                0x0000000008000294                CAN_Ini
+ .text.I2C_Ini  0x000000000800029e        0xa Src/HAL/I2C.o
+                0x000000000800029e                I2C_Ini
+ .text.LED_Ini  0x00000000080002a8       0x38 Src/HAL/LED.o
+                0x00000000080002a8                LED_Ini
+ .text.LED_per  0x00000000080002e0       0x64 Src/HAL/LED.o
+                0x00000000080002e0                LED_per
+ .text.LED_Set  0x0000000008000344       0x1c Src/HAL/LED.o
+                0x0000000008000344                LED_Set
+ .text.Buffer_Ini
+                0x0000000008000360       0x34 Src/HAL/SERIE.o
+ .text.Buffer_Tx_Set
+                0x0000000008000394       0x54 Src/HAL/SERIE.o
+ .text.Buffer_Tx_Get
+                0x00000000080003e8       0x48 Src/HAL/SERIE.o
+ .text.Buffer_Rx_Set
+                0x0000000008000430       0x54 Src/HAL/SERIE.o
  .text.SERIE_Ini
-                0x00000000080003d8        0xa Src/HAL/SERIE.o
-                0x00000000080003d8                SERIE_Ini
- *fill*         0x00000000080003e2        0x2 
+                0x0000000008000484      0x17c Src/HAL/SERIE.o
+                0x0000000008000484                SERIE_Ini
+ .text.USART2_IRQHandler
+                0x0000000008000600       0x8c Src/HAL/SERIE.o
+                0x0000000008000600                USART2_IRQHandler
+ .text.SERIE_TxChar
+                0x000000000800068c       0x38 Src/HAL/SERIE.o
+                0x000000000800068c                SERIE_TxChar
  .text.SWITCH_Ini
-                0x00000000080003e4       0xa4 Src/HAL/SWITCH.o
-                0x00000000080003e4                SWITCH_Ini
+                0x00000000080006c4       0xa4 Src/HAL/SWITCH.o
+                0x00000000080006c4                SWITCH_Ini
  .text.SWITCH_per
-                0x0000000008000488      0x114 Src/HAL/SWITCH.o
-                0x0000000008000488                SWITCH_per
- .text.SWITCH_Get_AutoRepeat_1
-                0x000000000800059c       0x14 Src/HAL/SWITCH.o
-                0x000000000800059c                SWITCH_Get_AutoRepeat_1
- .text.SWITCH_Get_BeforeState_1
-                0x00000000080005b0       0x14 Src/HAL/SWITCH.o
-                0x00000000080005b0                SWITCH_Get_BeforeState_1
- .text.SWITCH_Get_BTN_0
-                0x00000000080005c4       0x14 Src/HAL/SWITCH.o
-                0x00000000080005c4                SWITCH_Get_BTN_0
- .text.SWITCH_Get_BTN_1
-                0x00000000080005d8       0x14 Src/HAL/SWITCH.o
-                0x00000000080005d8                SWITCH_Get_BTN_1
- .text.CLOCK_Set_Timer_1ms
-                0x00000000080005ec       0x74 Src/SHA/CLOCK.o
-                0x00000000080005ec                CLOCK_Set_Timer_1ms
+                0x0000000008000768      0x198 Src/HAL/SWITCH.o
+                0x0000000008000768                SWITCH_per
+ .text.SWITCH_GetStatus
+                0x0000000008000900       0x1c Src/HAL/SWITCH.o
+                0x0000000008000900                SWITCH_GetStatus
+ .text.CLOCK_Ini
+                0x000000000800091c       0x10 Src/SHA/CLOCK.o
+                0x000000000800091c                CLOCK_Ini
+ .text.CLOCK_GetFreq
+                0x000000000800092c       0x10 Src/SHA/CLOCK.o
+                0x000000000800092c                CLOCK_GetFreq
  .text.SYSTEM_Ini
-                0x0000000008000660       0x4c Src/SYS/SYSTEM.o
-                0x0000000008000660                SYSTEM_Ini
+                0x000000000800093c       0x44 Src/SYS/SYSTEM.o
+                0x000000000800093c                SYSTEM_Ini
+ .text.SYSTEM_Set_Timer_1ms
+                0x0000000008000980       0x58 Src/SYS/SYSTEM.o
+                0x0000000008000980                SYSTEM_Set_Timer_1ms
  .text.SysTick_Handler
-                0x00000000080006ac       0x4c Src/SYS/SYSTEM.o
-                0x00000000080006ac                SysTick_Handler
- .text.SISTEM_GetTimer
-                0x00000000080006f8       0x38 Src/SYS/SYSTEM.o
-                0x00000000080006f8                SISTEM_GetTimer
- .text.SISTEM_SetTimer
-                0x0000000008000730       0x44 Src/SYS/SYSTEM.o
-                0x0000000008000730                SISTEM_SetTimer
+                0x00000000080009d8       0x4c Src/SYS/SYSTEM.o
+                0x00000000080009d8                SysTick_Handler
  .text.Reset_Handler
-                0x0000000008000774       0x50 Startup/startup_stm32f042k6tx.o
-                0x0000000008000774                Reset_Handler
+                0x0000000008000a24       0x50 Startup/startup_stm32f042k6tx.o
+                0x0000000008000a24                Reset_Handler
  .text.Default_Handler
-                0x00000000080007c4        0x2 Startup/startup_stm32f042k6tx.o
-                0x00000000080007c4                TIM1_CC_IRQHandler
-                0x00000000080007c4                TSC_IRQHandler
-                0x00000000080007c4                HardFault_Handler
-                0x00000000080007c4                PVD_IRQHandler
-                0x00000000080007c4                PendSV_Handler
-                0x00000000080007c4                NMI_Handler
-                0x00000000080007c4                I2C1_IRQHandler
-                0x00000000080007c4                RCC_CRS_IRQHandler
-                0x00000000080007c4                SPI1_IRQHandler
-                0x00000000080007c4                TIM6_DAC_IRQHandler
-                0x00000000080007c4                USART3_4_IRQHandler
-                0x00000000080007c4                EXTI2_3_IRQHandler
-                0x00000000080007c4                I2C2_IRQHandler
-                0x00000000080007c4                TIM17_IRQHandler
-                0x00000000080007c4                CEC_CAN_IRQHandler
-                0x00000000080007c4                RTC_IRQHandler
-                0x00000000080007c4                TIM16_IRQHandler
-                0x00000000080007c4                TIM3_IRQHandler
-                0x00000000080007c4                EXTI4_15_IRQHandler
-                0x00000000080007c4                Default_Handler
-                0x00000000080007c4                TIM14_IRQHandler
-                0x00000000080007c4                TIM7_IRQHandler
-                0x00000000080007c4                TIM15_IRQHandler
-                0x00000000080007c4                EXTI0_1_IRQHandler
-                0x00000000080007c4                USB_IRQHandler
-                0x00000000080007c4                SPI2_IRQHandler
-                0x00000000080007c4                DMA1_CH1_IRQHandler
-                0x00000000080007c4                SVC_Handler
-                0x00000000080007c4                WWDG_IRQHandler
-                0x00000000080007c4                TIM2_IRQHandler
-                0x00000000080007c4                ADC_COMP_IRQHandler
-                0x00000000080007c4                USART2_IRQHandler
-                0x00000000080007c4                FLASH_IRQHandler
-                0x00000000080007c4                USART1_IRQHandler
-                0x00000000080007c4                TIM1_BRK_UP_TRG_COM_IRQHandler
- *fill*         0x00000000080007c6        0x2 
+                0x0000000008000a74        0x2 Startup/startup_stm32f042k6tx.o
+                0x0000000008000a74                TIM1_CC_IRQHandler
+                0x0000000008000a74                TSC_IRQHandler
+                0x0000000008000a74                HardFault_Handler
+                0x0000000008000a74                PVD_IRQHandler
+                0x0000000008000a74                PendSV_Handler
+                0x0000000008000a74                NMI_Handler
+                0x0000000008000a74                I2C1_IRQHandler
+                0x0000000008000a74                RCC_CRS_IRQHandler
+                0x0000000008000a74                SPI1_IRQHandler
+                0x0000000008000a74                TIM6_DAC_IRQHandler
+                0x0000000008000a74                USART3_4_IRQHandler
+                0x0000000008000a74                EXTI2_3_IRQHandler
+                0x0000000008000a74                I2C2_IRQHandler
+                0x0000000008000a74                TIM17_IRQHandler
+                0x0000000008000a74                CEC_CAN_IRQHandler
+                0x0000000008000a74                RTC_IRQHandler
+                0x0000000008000a74                TIM16_IRQHandler
+                0x0000000008000a74                TIM3_IRQHandler
+                0x0000000008000a74                EXTI4_15_IRQHandler
+                0x0000000008000a74                Default_Handler
+                0x0000000008000a74                TIM14_IRQHandler
+                0x0000000008000a74                TIM7_IRQHandler
+                0x0000000008000a74                TIM15_IRQHandler
+                0x0000000008000a74                EXTI0_1_IRQHandler
+                0x0000000008000a74                USB_IRQHandler
+                0x0000000008000a74                SPI2_IRQHandler
+                0x0000000008000a74                DMA1_CH1_IRQHandler
+                0x0000000008000a74                SVC_Handler
+                0x0000000008000a74                WWDG_IRQHandler
+                0x0000000008000a74                TIM2_IRQHandler
+                0x0000000008000a74                ADC_COMP_IRQHandler
+                0x0000000008000a74                FLASH_IRQHandler
+                0x0000000008000a74                USART1_IRQHandler
+                0x0000000008000a74                TIM1_BRK_UP_TRG_COM_IRQHandler
+ *fill*         0x0000000008000a76        0x2 
  .text.__libc_init_array
-                0x00000000080007c8       0x48 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-init.o)
-                0x00000000080007c8                __libc_init_array
+                0x0000000008000a78       0x48 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-init.o)
+                0x0000000008000a78                __libc_init_array
  *(.glue_7)
- .glue_7        0x0000000008000810        0x0 linker stubs
+ .glue_7        0x0000000008000ac0        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000008000810        0x0 linker stubs
+ .glue_7t       0x0000000008000ac0        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0000000008000810        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+ .eh_frame      0x0000000008000ac0        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
  *(.init)
- .init          0x0000000008000810        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crti.o
-                0x0000000008000810                _init
- .init          0x0000000008000814        0x8 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtn.o
+ .init          0x0000000008000ac0        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crti.o
+                0x0000000008000ac0                _init
+ .init          0x0000000008000ac4        0x8 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtn.o
  *(.fini)
- .fini          0x000000000800081c        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crti.o
-                0x000000000800081c                _fini
- .fini          0x0000000008000820        0x8 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtn.o
-                0x0000000008000828                . = ALIGN (0x4)
-                0x0000000008000828                _etext = .
+ .fini          0x0000000008000acc        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crti.o
+                0x0000000008000acc                _fini
+ .fini          0x0000000008000ad0        0x8 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtn.o
+                0x0000000008000ad8                . = ALIGN (0x4)
+                0x0000000008000ad8                _etext = .
 
-.vfp11_veneer   0x0000000008000828        0x0
- .vfp11_veneer  0x0000000008000828        0x0 linker stubs
+.vfp11_veneer   0x0000000008000ad8        0x0
+ .vfp11_veneer  0x0000000008000ad8        0x0 linker stubs
 
-.v4_bx          0x0000000008000828        0x0
- .v4_bx         0x0000000008000828        0x0 linker stubs
+.v4_bx          0x0000000008000ad8        0x0
+ .v4_bx         0x0000000008000ad8        0x0 linker stubs
 
-.iplt           0x0000000008000828        0x0
- .iplt          0x0000000008000828        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+.iplt           0x0000000008000ad8        0x0
+ .iplt          0x0000000008000ad8        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.rel.dyn        0x0000000008000828        0x0
- .rel.iplt      0x0000000008000828        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+.rel.dyn        0x0000000008000ad8        0x0
+ .rel.iplt      0x0000000008000ad8        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.rodata         0x0000000008000828        0x0
-                0x0000000008000828                . = ALIGN (0x4)
+.rodata         0x0000000008000ad8        0x0
+                0x0000000008000ad8                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
-                0x0000000008000828                . = ALIGN (0x4)
+                0x0000000008000ad8                . = ALIGN (0x4)
 
-.ARM.extab      0x0000000008000828        0x0
-                0x0000000008000828                . = ALIGN (0x4)
+.ARM.extab      0x0000000008000ad8        0x0
+                0x0000000008000ad8                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000008000828                . = ALIGN (0x4)
+                0x0000000008000ad8                . = ALIGN (0x4)
 
-.ARM            0x0000000008000828        0x0
-                0x0000000008000828                . = ALIGN (0x4)
-                0x0000000008000828                __exidx_start = .
+.ARM            0x0000000008000ad8        0x0
+                0x0000000008000ad8                . = ALIGN (0x4)
+                0x0000000008000ad8                __exidx_start = .
  *(.ARM.exidx*)
-                0x0000000008000828                __exidx_end = .
-                0x0000000008000828                . = ALIGN (0x4)
+                0x0000000008000ad8                __exidx_end = .
+                0x0000000008000ad8                . = ALIGN (0x4)
 
-.preinit_array  0x0000000008000828        0x0
-                0x0000000008000828                . = ALIGN (0x4)
-                0x0000000008000828                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0000000008000ad8        0x0
+                0x0000000008000ad8                . = ALIGN (0x4)
+                0x0000000008000ad8                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0000000008000828                PROVIDE (__preinit_array_end = .)
-                0x0000000008000828                . = ALIGN (0x4)
+                0x0000000008000ad8                PROVIDE (__preinit_array_end = .)
+                0x0000000008000ad8                . = ALIGN (0x4)
 
-.init_array     0x0000000008000828        0x4
-                0x0000000008000828                . = ALIGN (0x4)
-                0x0000000008000828                PROVIDE (__init_array_start = .)
+.init_array     0x0000000008000ad8        0x4
+                0x0000000008000ad8                . = ALIGN (0x4)
+                0x0000000008000ad8                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008000828        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
-                0x000000000800082c                PROVIDE (__init_array_end = .)
-                0x000000000800082c                . = ALIGN (0x4)
+ .init_array    0x0000000008000ad8        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+                0x0000000008000adc                PROVIDE (__init_array_end = .)
+                0x0000000008000adc                . = ALIGN (0x4)
 
-.fini_array     0x000000000800082c        0x4
-                0x000000000800082c                . = ALIGN (0x4)
+.fini_array     0x0000000008000adc        0x4
+                0x0000000008000adc                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x000000000800082c        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+ .fini_array    0x0000000008000adc        0x4 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0000000008000830                . = ALIGN (0x4)
-                0x0000000008000830                _sidata = LOADADDR (.data)
+                0x0000000008000ae0                . = ALIGN (0x4)
+                0x0000000008000ae0                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000        0x4 load address 0x0000000008000830
+.data           0x0000000020000000        0x0 load address 0x0000000008000ae0
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
  *(.data*)
- .data.flag.4239
-                0x0000000020000000        0x4 Src/APP/main.o
  *(.RamFunc)
  *(.RamFunc*)
-                0x0000000020000004                . = ALIGN (0x4)
-                0x0000000020000004                _edata = .
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _edata = .
 
-.igot.plt       0x0000000020000004        0x0 load address 0x0000000008000834
- .igot.plt      0x0000000020000004        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
-                0x0000000020000004                . = ALIGN (0x4)
+.igot.plt       0x0000000020000000        0x0 load address 0x0000000008000ae0
+ .igot.plt      0x0000000020000000        0x0 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+                0x0000000020000000                . = ALIGN (0x4)
 
-.bss            0x0000000020000004       0x74 load address 0x0000000008000834
-                0x0000000020000004                _sbss = .
-                0x0000000020000004                __bss_start__ = _sbss
+.bss            0x0000000020000000      0x278 load address 0x0000000008000ae0
+                0x0000000020000000                _sbss = .
+                0x0000000020000000                __bss_start__ = _sbss
  *(.bss)
- .bss           0x0000000020000004       0x1c c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
+ .bss           0x0000000020000000       0x1c c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp/crtbegin.o
  *(.bss*)
- .bss.state_0   0x0000000020000020        0x4 Src/APP/main.o
- .bss.state_1   0x0000000020000024        0x4 Src/APP/main.o
- .bss.state_2   0x0000000020000028        0x4 Src/APP/main.o
- .bss.state_3   0x000000002000002c        0x4 Src/APP/main.o
- .bss.time_1.4243
-                0x0000000020000030        0x4 Src/APP/main.o
- .bss.ImageLED  0x0000000020000034        0x4 Src/HAL/LED.o
- .bss.phase.4208
-                0x0000000020000038        0x4 Src/HAL/LED.o
- .bss.switch1Input
-                0x000000002000003c        0x4 Src/HAL/SWITCH.o
- .bss.switch2Input
-                0x0000000020000040        0x4 Src/HAL/SWITCH.o
- .bss.switch1Stat
-                0x0000000020000044        0x4 Src/HAL/SWITCH.o
- .bss.switch2Stat
-                0x0000000020000048        0x4 Src/HAL/SWITCH.o
- .bss.switch1beforestate
-                0x000000002000004c        0x4 Src/HAL/SWITCH.o
- .bss.switch2beforestate
-                0x0000000020000050        0x4 Src/HAL/SWITCH.o
- .bss.switch1repeat
-                0x0000000020000054        0x4 Src/HAL/SWITCH.o
- .bss.switch2repeat
-                0x0000000020000058        0x4 Src/HAL/SWITCH.o
- .bss.tiempoon  0x000000002000005c        0x4 Src/SYS/SYSTEM.o
- .bss.tiempo1   0x0000000020000060        0x4 Src/SYS/SYSTEM.o
- .bss.tiempo2   0x0000000020000064        0x4 Src/SYS/SYSTEM.o
+ .bss.ImageLED  0x000000002000001c        0x4 Src/HAL/LED.o
+ .bss.phase.4210
+                0x0000000020000020        0x4 Src/HAL/LED.o
+ .bss.errors    0x0000000020000024        0x4 Src/HAL/SERIE.o
+ .bss.PtrTxHd   0x0000000020000028        0x4 Src/HAL/SERIE.o
+ .bss.PtrTxTl   0x000000002000002c        0x4 Src/HAL/SERIE.o
+ .bss.BufferTxc
+                0x0000000020000030      0x100 Src/HAL/SERIE.o
+ .bss.PtrRxHd   0x0000000020000130        0x4 Src/HAL/SERIE.o
+ .bss.PtrRxTl   0x0000000020000134        0x4 Src/HAL/SERIE.o
+ .bss.BufferRxc
+                0x0000000020000138      0x100 Src/HAL/SERIE.o
+ .bss.switchInput
+                0x0000000020000238        0x8 Src/HAL/SWITCH.o
+ .bss.switchStat
+                0x0000000020000240        0x8 Src/HAL/SWITCH.o
+ .bss.switchBeforestate
+                0x0000000020000248        0x8 Src/HAL/SWITCH.o
+ .bss.switchCuenta
+                0x0000000020000250        0x8 Src/HAL/SWITCH.o
+ .bss.i.4229    0x0000000020000258        0x4 Src/HAL/SWITCH.o
+ .bss.tiempoon  0x000000002000025c        0x4 Src/SYS/SYSTEM.o
+ .bss.tiempo1   0x0000000020000260        0x4 Src/SYS/SYSTEM.o
+ .bss.tiempo2   0x0000000020000264        0x4 Src/SYS/SYSTEM.o
  *(COMMON)
- COMMON         0x0000000020000068       0x10 Src/HAL/LED.o
-                0x0000000020000068                LED
-                0x0000000020000078                . = ALIGN (0x4)
-                0x0000000020000078                _ebss = .
-                0x0000000020000078                __bss_end__ = _ebss
+ COMMON         0x0000000020000268       0x10 Src/HAL/LED.o
+                0x0000000020000268                LED
+                0x0000000020000278                . = ALIGN (0x4)
+                0x0000000020000278                _ebss = .
+                0x0000000020000278                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020000078      0x600 load address 0x0000000008000834
-                0x0000000020000078                . = ALIGN (0x8)
+                0x0000000020000278      0x600 load address 0x0000000008000ae0
+                0x0000000020000278                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x0000000020000078                PROVIDE (_end = .)
-                0x0000000020000278                . = (. + _Min_Heap_Size)
- *fill*         0x0000000020000078      0x200 
-                0x0000000020000678                . = (. + _Min_Stack_Size)
- *fill*         0x0000000020000278      0x400 
-                0x0000000020000678                . = ALIGN (0x8)
+                0x0000000020000278                PROVIDE (_end = .)
+                0x0000000020000478                . = (. + _Min_Heap_Size)
+ *fill*         0x0000000020000278      0x200 
+                0x0000000020000878                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020000478      0x400 
+                0x0000000020000878                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -948,131 +935,131 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libm.a
 LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a
 
-.debug_info     0x0000000000000000      0xa20
- .debug_info    0x0000000000000000      0x158 Src/APP/main.o
- .debug_info    0x0000000000000158       0xa6 Src/HAL/ANALOG.o
- .debug_info    0x00000000000001fe       0xa6 Src/HAL/BUZZ.o
- .debug_info    0x00000000000002a4       0xa6 Src/HAL/CAN.o
- .debug_info    0x000000000000034a       0xa6 Src/HAL/I2C.o
- .debug_info    0x00000000000003f0      0x170 Src/HAL/LED.o
- .debug_info    0x0000000000000560       0xa6 Src/HAL/SERIE.o
- .debug_info    0x0000000000000606      0x1c0 Src/HAL/SWITCH.o
- .debug_info    0x00000000000007c6       0xdd Src/SHA/CLOCK.o
- .debug_info    0x00000000000008a3      0x15b Src/SYS/SYSTEM.o
- .debug_info    0x00000000000009fe       0x22 Startup/startup_stm32f042k6tx.o
+.debug_info     0x0000000000000000      0xbb2
+ .debug_info    0x0000000000000000      0x13f Src/APP/main.o
+ .debug_info    0x000000000000013f       0xa6 Src/HAL/ANALOG.o
+ .debug_info    0x00000000000001e5       0xa6 Src/HAL/BUZZ.o
+ .debug_info    0x000000000000028b       0xa6 Src/HAL/CAN.o
+ .debug_info    0x0000000000000331       0xa6 Src/HAL/I2C.o
+ .debug_info    0x00000000000003d7      0x182 Src/HAL/LED.o
+ .debug_info    0x0000000000000559      0x288 Src/HAL/SERIE.o
+ .debug_info    0x00000000000007e1      0x182 Src/HAL/SWITCH.o
+ .debug_info    0x0000000000000963       0xc0 Src/SHA/CLOCK.o
+ .debug_info    0x0000000000000a23      0x16d Src/SYS/SYSTEM.o
+ .debug_info    0x0000000000000b90       0x22 Startup/startup_stm32f042k6tx.o
 
-.debug_abbrev   0x0000000000000000      0x4d1
- .debug_abbrev  0x0000000000000000       0x9b Src/APP/main.o
- .debug_abbrev  0x000000000000009b       0x45 Src/HAL/ANALOG.o
- .debug_abbrev  0x00000000000000e0       0x45 Src/HAL/BUZZ.o
- .debug_abbrev  0x0000000000000125       0x45 Src/HAL/CAN.o
- .debug_abbrev  0x000000000000016a       0x45 Src/HAL/I2C.o
- .debug_abbrev  0x00000000000001af       0xf2 Src/HAL/LED.o
- .debug_abbrev  0x00000000000002a1       0x45 Src/HAL/SERIE.o
- .debug_abbrev  0x00000000000002e6       0x7f Src/HAL/SWITCH.o
- .debug_abbrev  0x0000000000000365       0x90 Src/SHA/CLOCK.o
- .debug_abbrev  0x00000000000003f5       0xca Src/SYS/SYSTEM.o
- .debug_abbrev  0x00000000000004bf       0x12 Startup/startup_stm32f042k6tx.o
+.debug_abbrev   0x0000000000000000      0x676
+ .debug_abbrev  0x0000000000000000       0xbe Src/APP/main.o
+ .debug_abbrev  0x00000000000000be       0x45 Src/HAL/ANALOG.o
+ .debug_abbrev  0x0000000000000103       0x45 Src/HAL/BUZZ.o
+ .debug_abbrev  0x0000000000000148       0x45 Src/HAL/CAN.o
+ .debug_abbrev  0x000000000000018d       0x45 Src/HAL/I2C.o
+ .debug_abbrev  0x00000000000001d2       0xf2 Src/HAL/LED.o
+ .debug_abbrev  0x00000000000002c4      0x163 Src/HAL/SERIE.o
+ .debug_abbrev  0x0000000000000427       0xda Src/HAL/SWITCH.o
+ .debug_abbrev  0x0000000000000501       0x81 Src/SHA/CLOCK.o
+ .debug_abbrev  0x0000000000000582       0xe2 Src/SYS/SYSTEM.o
+ .debug_abbrev  0x0000000000000664       0x12 Startup/startup_stm32f042k6tx.o
 
-.debug_aranges  0x0000000000000000      0x258
+.debug_aranges  0x0000000000000000      0x270
  .debug_aranges
-                0x0000000000000000       0x40 Src/APP/main.o
+                0x0000000000000000       0x38 Src/APP/main.o
  .debug_aranges
-                0x0000000000000040       0x30 Src/HAL/ANALOG.o
+                0x0000000000000038       0x30 Src/HAL/ANALOG.o
  .debug_aranges
-                0x0000000000000070       0x30 Src/HAL/BUZZ.o
+                0x0000000000000068       0x30 Src/HAL/BUZZ.o
  .debug_aranges
-                0x00000000000000a0       0x30 Src/HAL/CAN.o
+                0x0000000000000098       0x30 Src/HAL/CAN.o
  .debug_aranges
-                0x00000000000000d0       0x30 Src/HAL/I2C.o
+                0x00000000000000c8       0x30 Src/HAL/I2C.o
  .debug_aranges
-                0x0000000000000100       0x38 Src/HAL/LED.o
+                0x00000000000000f8       0x40 Src/HAL/LED.o
  .debug_aranges
-                0x0000000000000138       0x30 Src/HAL/SERIE.o
+                0x0000000000000138       0x68 Src/HAL/SERIE.o
  .debug_aranges
-                0x0000000000000168       0x58 Src/HAL/SWITCH.o
+                0x00000000000001a0       0x38 Src/HAL/SWITCH.o
  .debug_aranges
-                0x00000000000001c0       0x30 Src/SHA/CLOCK.o
+                0x00000000000001d8       0x28 Src/SHA/CLOCK.o
  .debug_aranges
-                0x00000000000001f0       0x40 Src/SYS/SYSTEM.o
+                0x0000000000000200       0x48 Src/SYS/SYSTEM.o
  .debug_aranges
-                0x0000000000000230       0x28 Startup/startup_stm32f042k6tx.o
+                0x0000000000000248       0x28 Startup/startup_stm32f042k6tx.o
 
-.debug_ranges   0x0000000000000000      0x1b0
- .debug_ranges  0x0000000000000000       0x30 Src/APP/main.o
- .debug_ranges  0x0000000000000030       0x20 Src/HAL/ANALOG.o
- .debug_ranges  0x0000000000000050       0x20 Src/HAL/BUZZ.o
- .debug_ranges  0x0000000000000070       0x20 Src/HAL/CAN.o
- .debug_ranges  0x0000000000000090       0x20 Src/HAL/I2C.o
- .debug_ranges  0x00000000000000b0       0x28 Src/HAL/LED.o
- .debug_ranges  0x00000000000000d8       0x20 Src/HAL/SERIE.o
- .debug_ranges  0x00000000000000f8       0x48 Src/HAL/SWITCH.o
- .debug_ranges  0x0000000000000140       0x20 Src/SHA/CLOCK.o
- .debug_ranges  0x0000000000000160       0x30 Src/SYS/SYSTEM.o
- .debug_ranges  0x0000000000000190       0x20 Startup/startup_stm32f042k6tx.o
+.debug_ranges   0x0000000000000000      0x1c8
+ .debug_ranges  0x0000000000000000       0x28 Src/APP/main.o
+ .debug_ranges  0x0000000000000028       0x20 Src/HAL/ANALOG.o
+ .debug_ranges  0x0000000000000048       0x20 Src/HAL/BUZZ.o
+ .debug_ranges  0x0000000000000068       0x20 Src/HAL/CAN.o
+ .debug_ranges  0x0000000000000088       0x20 Src/HAL/I2C.o
+ .debug_ranges  0x00000000000000a8       0x30 Src/HAL/LED.o
+ .debug_ranges  0x00000000000000d8       0x58 Src/HAL/SERIE.o
+ .debug_ranges  0x0000000000000130       0x28 Src/HAL/SWITCH.o
+ .debug_ranges  0x0000000000000158       0x18 Src/SHA/CLOCK.o
+ .debug_ranges  0x0000000000000170       0x38 Src/SYS/SYSTEM.o
+ .debug_ranges  0x00000000000001a8       0x20 Startup/startup_stm32f042k6tx.o
 
-.debug_macro    0x0000000000000000     0x2a1c
- .debug_macro   0x0000000000000000       0xc6 Src/APP/main.o
- .debug_macro   0x00000000000000c6      0xa8a Src/APP/main.o
- .debug_macro   0x0000000000000b50       0x22 Src/APP/main.o
- .debug_macro   0x0000000000000b72       0x8e Src/APP/main.o
- .debug_macro   0x0000000000000c00       0x51 Src/APP/main.o
- .debug_macro   0x0000000000000c51      0x103 Src/APP/main.o
- .debug_macro   0x0000000000000d54       0x6a Src/APP/main.o
- .debug_macro   0x0000000000000dbe      0x1df Src/APP/main.o
- .debug_macro   0x0000000000000f9d       0x16 Src/APP/main.o
- .debug_macro   0x0000000000000fb3       0x22 Src/APP/main.o
- .debug_macro   0x0000000000000fd5       0x10 Src/APP/main.o
- .debug_macro   0x0000000000000fe5      0x15e Src/HAL/ANALOG.o
- .debug_macro   0x0000000000001143       0x3a Src/HAL/ANALOG.o
- .debug_macro   0x000000000000117d       0x34 Src/HAL/ANALOG.o
- .debug_macro   0x00000000000011b1       0x9a Src/HAL/ANALOG.o
- .debug_macro   0x000000000000124b      0xdc5 Src/HAL/ANALOG.o
- .debug_macro   0x0000000000002010      0x15e Src/HAL/BUZZ.o
- .debug_macro   0x000000000000216e      0x15e Src/HAL/CAN.o
- .debug_macro   0x00000000000022cc      0x15e Src/HAL/I2C.o
- .debug_macro   0x000000000000242a       0xc8 Src/HAL/LED.o
- .debug_macro   0x00000000000024f2      0x15e Src/HAL/SERIE.o
- .debug_macro   0x0000000000002650       0xcc Src/HAL/SWITCH.o
- .debug_macro   0x000000000000271c       0x40 Src/HAL/SWITCH.o
- .debug_macro   0x000000000000275c      0x166 Src/SHA/CLOCK.o
- .debug_macro   0x00000000000028c2      0x15a Src/SYS/SYSTEM.o
+.debug_macro    0x0000000000000000     0x2918
+ .debug_macro   0x0000000000000000       0xd0 Src/APP/main.o
+ .debug_macro   0x00000000000000d0      0xa8a Src/APP/main.o
+ .debug_macro   0x0000000000000b5a       0x22 Src/APP/main.o
+ .debug_macro   0x0000000000000b7c       0x8e Src/APP/main.o
+ .debug_macro   0x0000000000000c0a       0x51 Src/APP/main.o
+ .debug_macro   0x0000000000000c5b      0x103 Src/APP/main.o
+ .debug_macro   0x0000000000000d5e       0x6a Src/APP/main.o
+ .debug_macro   0x0000000000000dc8      0x1df Src/APP/main.o
+ .debug_macro   0x0000000000000fa7       0x16 Src/APP/main.o
+ .debug_macro   0x0000000000000fbd       0x28 Src/APP/main.o
+ .debug_macro   0x0000000000000fe5       0x10 Src/APP/main.o
+ .debug_macro   0x0000000000000ff5      0x168 Src/HAL/ANALOG.o
+ .debug_macro   0x000000000000115d       0x3a Src/HAL/ANALOG.o
+ .debug_macro   0x0000000000001197       0x34 Src/HAL/ANALOG.o
+ .debug_macro   0x00000000000011cb       0x9a Src/HAL/ANALOG.o
+ .debug_macro   0x0000000000001265      0xdc5 Src/HAL/ANALOG.o
+ .debug_macro   0x000000000000202a      0x168 Src/HAL/BUZZ.o
+ .debug_macro   0x0000000000002192      0x168 Src/HAL/CAN.o
+ .debug_macro   0x00000000000022fa      0x168 Src/HAL/I2C.o
+ .debug_macro   0x0000000000002462       0xc8 Src/HAL/LED.o
+ .debug_macro   0x000000000000252a       0xc0 Src/HAL/SERIE.o
+ .debug_macro   0x00000000000025ea       0xec Src/HAL/SWITCH.o
+ .debug_macro   0x00000000000026d6       0x40 Src/HAL/SWITCH.o
+ .debug_macro   0x0000000000002716       0x9e Src/SHA/CLOCK.o
+ .debug_macro   0x00000000000027b4      0x164 Src/SYS/SYSTEM.o
 
-.debug_line     0x0000000000000000     0x3b0c
- .debug_line    0x0000000000000000      0x5fa Src/APP/main.o
- .debug_line    0x00000000000005fa      0x5d7 Src/HAL/ANALOG.o
- .debug_line    0x0000000000000bd1      0x5d1 Src/HAL/BUZZ.o
- .debug_line    0x00000000000011a2      0x5ce Src/HAL/CAN.o
- .debug_line    0x0000000000001770      0x5ce Src/HAL/I2C.o
- .debug_line    0x0000000000001d3e      0x52e Src/HAL/LED.o
- .debug_line    0x000000000000226c      0x5d4 Src/HAL/SERIE.o
- .debug_line    0x0000000000002840      0x5fc Src/HAL/SWITCH.o
- .debug_line    0x0000000000002e3c      0x644 Src/SHA/CLOCK.o
- .debug_line    0x0000000000003480      0x608 Src/SYS/SYSTEM.o
- .debug_line    0x0000000000003a88       0x84 Startup/startup_stm32f042k6tx.o
+.debug_line     0x0000000000000000     0x3e8f
+ .debug_line    0x0000000000000000      0x647 Src/APP/main.o
+ .debug_line    0x0000000000000647      0x657 Src/HAL/ANALOG.o
+ .debug_line    0x0000000000000c9e      0x651 Src/HAL/BUZZ.o
+ .debug_line    0x00000000000012ef      0x64e Src/HAL/CAN.o
+ .debug_line    0x000000000000193d      0x64e Src/HAL/I2C.o
+ .debug_line    0x0000000000001f8b      0x547 Src/HAL/LED.o
+ .debug_line    0x00000000000024d2      0x715 Src/HAL/SERIE.o
+ .debug_line    0x0000000000002be7      0x69b Src/HAL/SWITCH.o
+ .debug_line    0x0000000000003282      0x4d4 Src/SHA/CLOCK.o
+ .debug_line    0x0000000000003756      0x6b5 Src/SYS/SYSTEM.o
+ .debug_line    0x0000000000003e0b       0x84 Startup/startup_stm32f042k6tx.o
 
-.debug_str      0x0000000000000000     0xaeb4
- .debug_str     0x0000000000000000     0x3c93 Src/APP/main.o
-                                       0x3df7 (size before relaxing)
- .debug_str     0x0000000000003c93     0x6e26 Src/HAL/ANALOG.o
-                                       0xab94 (size before relaxing)
- .debug_str     0x000000000000aab9       0x2d Src/HAL/BUZZ.o
-                                       0xab8c (size before relaxing)
- .debug_str     0x000000000000aae6       0x29 Src/HAL/CAN.o
-                                       0xab88 (size before relaxing)
- .debug_str     0x000000000000ab0f       0x29 Src/HAL/I2C.o
-                                       0xab88 (size before relaxing)
- .debug_str     0x000000000000ab38       0xa5 Src/HAL/LED.o
-                                       0xaaa2 (size before relaxing)
- .debug_str     0x000000000000abdd       0x31 Src/HAL/SERIE.o
-                                       0xab90 (size before relaxing)
- .debug_str     0x000000000000ac0e      0x17a Src/HAL/SWITCH.o
-                                       0xac02 (size before relaxing)
- .debug_str     0x000000000000ad88       0x5e Src/SHA/CLOCK.o
-                                       0xabd1 (size before relaxing)
- .debug_str     0x000000000000ade6       0x9d Src/SYS/SYSTEM.o
-                                       0xac10 (size before relaxing)
- .debug_str     0x000000000000ae83       0x31 Startup/startup_stm32f042k6tx.o
+.debug_str      0x0000000000000000     0xaf7b
+ .debug_str     0x0000000000000000     0x3caa Src/APP/main.o
+                                       0x3e0e (size before relaxing)
+ .debug_str     0x0000000000003caa     0x6e26 Src/HAL/ANALOG.o
+                                       0xabc5 (size before relaxing)
+ .debug_str     0x000000000000aad0       0x2d Src/HAL/BUZZ.o
+                                       0xabbd (size before relaxing)
+ .debug_str     0x000000000000aafd       0x29 Src/HAL/CAN.o
+                                       0xabb9 (size before relaxing)
+ .debug_str     0x000000000000ab26       0x29 Src/HAL/I2C.o
+                                       0xabb9 (size before relaxing)
+ .debug_str     0x000000000000ab4f       0xb4 Src/HAL/LED.o
+                                       0xaab1 (size before relaxing)
+ .debug_str     0x000000000000ac03      0x130 Src/HAL/SERIE.o
+                                       0xaac5 (size before relaxing)
+ .debug_str     0x000000000000ad33      0x12b Src/HAL/SWITCH.o
+                                       0xabd6 (size before relaxing)
+ .debug_str     0x000000000000ae5e       0x3a Src/SHA/CLOCK.o
+                                       0xa9bd (size before relaxing)
+ .debug_str     0x000000000000ae98       0xb2 Src/SYS/SYSTEM.o
+                                       0xac56 (size before relaxing)
+ .debug_str     0x000000000000af4a       0x31 Startup/startup_stm32f042k6tx.o
                                          0xa4 (size before relaxing)
 
 .comment        0x0000000000000000       0x53
@@ -1088,16 +1075,16 @@ LOAD c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .comment       0x0000000000000053       0x54 Src/SHA/CLOCK.o
  .comment       0x0000000000000053       0x54 Src/SYS/SYSTEM.o
 
-.debug_frame    0x0000000000000000      0x560
- .debug_frame   0x0000000000000000       0x9c Src/APP/main.o
- .debug_frame   0x000000000000009c       0x64 Src/HAL/ANALOG.o
- .debug_frame   0x0000000000000100       0x64 Src/HAL/BUZZ.o
- .debug_frame   0x0000000000000164       0x64 Src/HAL/CAN.o
- .debug_frame   0x00000000000001c8       0x64 Src/HAL/I2C.o
- .debug_frame   0x000000000000022c       0x88 Src/HAL/LED.o
- .debug_frame   0x00000000000002b4       0x64 Src/HAL/SERIE.o
- .debug_frame   0x0000000000000318       0xf0 Src/HAL/SWITCH.o
- .debug_frame   0x0000000000000408       0x68 Src/SHA/CLOCK.o
- .debug_frame   0x0000000000000470       0xa4 Src/SYS/SYSTEM.o
- .debug_frame   0x0000000000000514       0x2c c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-init.o)
- .debug_frame   0x0000000000000540       0x20 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+.debug_frame    0x0000000000000000      0x5dc
+ .debug_frame   0x0000000000000000       0x84 Src/APP/main.o
+ .debug_frame   0x0000000000000084       0x64 Src/HAL/ANALOG.o
+ .debug_frame   0x00000000000000e8       0x64 Src/HAL/BUZZ.o
+ .debug_frame   0x000000000000014c       0x64 Src/HAL/CAN.o
+ .debug_frame   0x00000000000001b0       0x64 Src/HAL/I2C.o
+ .debug_frame   0x0000000000000214       0xa4 Src/HAL/LED.o
+ .debug_frame   0x00000000000002b8      0x144 Src/HAL/SERIE.o
+ .debug_frame   0x00000000000003fc       0x88 Src/HAL/SWITCH.o
+ .debug_frame   0x0000000000000484       0x4c Src/SHA/CLOCK.o
+ .debug_frame   0x00000000000004d0       0xc0 Src/SYS/SYSTEM.o
+ .debug_frame   0x0000000000000590       0x2c c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(lib_a-init.o)
+ .debug_frame   0x00000000000005bc       0x20 c:/st/stm32cubeide_1.6.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)

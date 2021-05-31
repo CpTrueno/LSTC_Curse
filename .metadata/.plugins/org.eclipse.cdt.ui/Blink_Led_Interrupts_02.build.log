@@ -1,4 +1,4 @@
-11:46:23 **** Build of configuration Debug for project Blink_Led_Interrupts_02 ****
+13:38:24 **** Incremental Build of configuration Debug for project Blink_Led_Interrupts_02 ****
 make -j4 all 
 arm-none-eabi-gcc -mcpu=cortex-m0 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f042k6tx.d" -MT"Startup/startup_stm32f042k6tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f042k6tx.o" "../Startup/startup_stm32f042k6tx.s"
 arm-none-eabi-gcc "../Src/SYSTEM.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/SYSTEM.d" -MT"Src/SYSTEM.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/SYSTEM.o"
@@ -9,16 +9,10 @@ arm-none-eabi-gcc -o "Blink_Led_Interrupts_02.elf" @"objects.list"   -mcpu=corte
 Finished building target: Blink_Led_Interrupts_02.elf
  
 arm-none-eabi-size   Blink_Led_Interrupts_02.elf 
-arm-none-eabi-objdump -h -S  Blink_Led_Interrupts_02.elf  > "Blink_Led_Interrupts_02.list"
-arm-none-eabi-objcopy  -O binary  Blink_Led_Interrupts_02.elf  "Blink_Led_Interrupts_02.bin"
    text	   data	    bss	    dec	    hex	filename
    1008	      8	   1576	   2592	    a20	Blink_Led_Interrupts_02.elf
 Finished building: default.size.stdout
  
-Finished building: Blink_Led_Interrupts_02.bin
-Finished building: Blink_Led_Interrupts_02.list
- 
- 
 
-11:46:25 Build Finished. 0 errors, 0 warnings. (took 1s.732ms)
+13:38:25 Build Finished. 0 errors, 0 warnings. (took 1s.851ms)
 

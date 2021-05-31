@@ -1,10 +1,10 @@
-11:46:27 **** Incremental Build of configuration Debug for project LESSON05 ****
+12:53:44 **** Incremental Build of configuration Debug for project LESSON05 ****
 make -j4 all 
 arm-none-eabi-size   LESSON05.elf 
    text	   data	    bss	    dec	    hex	filename
-   1580	      8	   1600	   3188	    c74	LESSON05.elf
+   2824	      8	   2136	   4968	   1368	LESSON05.elf
 Finished building: default.size.stdout
  
 
-11:46:28 Build Finished. 0 errors, 0 warnings. (took 572ms)
+12:53:45 Build Finished. 0 errors, 0 warnings. (took 593ms)
 

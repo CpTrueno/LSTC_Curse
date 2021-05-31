@@ -1,24 +1,10 @@
-11:46:25 **** Build of configuration Debug for project Blink_Led_Interrupts_03 ****
+13:38:26 **** Build of configuration Debug for project Blink_Led_Interrupts_03 ****
 make -j4 all 
-arm-none-eabi-gcc -mcpu=cortex-m0 -g3 -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f042k6tx.d" -MT"Startup/startup_stm32f042k6tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f042k6tx.o" "../Startup/startup_stm32f042k6tx.s"
-arm-none-eabi-gcc "../Src/SYSTEM.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/SYSTEM.d" -MT"Src/SYSTEM.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/SYSTEM.o"
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F0 -DNUCLEO_F042K6 -DSTM32F042K6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
-arm-none-eabi-gcc -o "Blink_Led_Interrupts_03.elf" @"objects.list"   -mcpu=cortex-m0 -T"Q:\06.Cursos y formacion\202104-Curso de Software embebido\3-Carpetas de usuarios\Jose Maria\Blink_Led_Interrupts_03\STM32F042K6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Blink_Led_Interrupts_03.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Blink_Led_Interrupts_03.elf
- 
 arm-none-eabi-size   Blink_Led_Interrupts_03.elf 
-arm-none-eabi-objdump -h -S  Blink_Led_Interrupts_03.elf  > "Blink_Led_Interrupts_03.list"
-arm-none-eabi-objcopy  -O binary  Blink_Led_Interrupts_03.elf  "Blink_Led_Interrupts_03.bin"
    text	   data	    bss	    dec	    hex	filename
    1036	      8	   1576	   2620	    a3c	Blink_Led_Interrupts_03.elf
 Finished building: default.size.stdout
  
-Finished building: Blink_Led_Interrupts_03.bin
- 
-Finished building: Blink_Led_Interrupts_03.list
- 
 
-11:46:27 Build Finished. 0 errors, 0 warnings. (took 1s.699ms)
+13:38:26 Build Finished. 0 errors, 0 warnings. (took 551ms)
 
